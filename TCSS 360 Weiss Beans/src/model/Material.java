@@ -1,6 +1,9 @@
+
 /*
  * TCSS 360 - Final Project
  */
+
+package model;
 
 import java.math.BigDecimal;
 

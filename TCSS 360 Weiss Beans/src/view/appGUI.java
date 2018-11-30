@@ -31,8 +31,12 @@ import javafx.scene.Parent;
 
 public class appGUI extends Application {
 
-	Scene scene1;
-	Scene scene2;
+	static Stage myStage;
+	Scene currentScene;
+	Scene loginView;
+	protected Scene profileView;
+	Scene projectListView;
+	Scene projectView;
 	Button btnAbout;
 
 	private final String VERSION = "0.0.1";
@@ -40,26 +44,38 @@ public class appGUI extends Application {
 	//initialization code for the javaFX application
     @Override
 	public void start(Stage appStage) throws Exception {
-    	Parent root;
+    		myStage = appStage;
     	
-    	
-    	
-    	root = FXMLLoader.load(getClass().getResource("Main_Window.fxml"));
-    	scene1= new Scene(root);
-        appStage.setScene(scene1);
-    	appStage.setTitle("Constructor");
-        appStage.setScene(scene1);
-        appStage.show();	
+    		Parent root;
+    		root = FXMLLoader.load(getClass().getResource("Main_Window.fxml"));
+    		
+    		
+    		
+    		profileController profileC = new profileController();
+		profileView = profileC.profileView;
+		
+    		loginController loginC = new loginController();
+    		loginView = loginC.loginView;
+    		
+    		ProjectListView projectLV = new ProjectListView();
+    		
+    		loginC.start(appStage);
+
+	}
+    
+    
+    protected void setScene(Scene scene) {
+		myStage.setScene(scene);
 	}
     
     @FXML
     private void aboutButtonAction(ActionEvent event) {
-        // Button was clicked, do something…
+        // Button was clicked, do something
         showAboutScreen(VERSION);
     }
     
     private void showAboutScreen(String version) {
-    	JOptionPane.showMessageDialog(null, "Constructor\n By Weiss and Beans Team\n Version: " 
+    		JOptionPane.showMessageDialog(null, "Constructor\n By Weiss and Beans Team\n Version: " 
     										+ version);
     }
     
@@ -69,9 +85,9 @@ public class appGUI extends Application {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//    	launch(args);
-//    }
+    public static void main(String args[]) {
+    		launch(args);
+    }
     // End of variables declaration     
     
     

@@ -2,6 +2,8 @@
  * TCSS 360 - Project
  */
 
+package model;
+
 import java.math.BigDecimal;
 
 /**
