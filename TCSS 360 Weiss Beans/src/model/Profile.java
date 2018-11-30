@@ -1,4 +1,4 @@
-/**
+ /**
  * Author: Harrison Lee
  * Date: November 28th, 2018
  * 
@@ -6,6 +6,7 @@
  * meaningful user information as they use the application. This information
  * can be exported and transfered to other devices.
  */
+package model;
 
 import java.io.FileWriter;
 import java.io.IOException;

@@ -13,21 +13,19 @@ import javafx.stage.Stage;
  */
 public class profileController extends Application {
 
-	Scene scene1;
+	Scene profileView;
 	
 	@Override
 	public void start(Stage appStage) throws Exception {
 		// TODO Auto-generated method stub
 		Parent root;
-	
-	    	
-	    	
 	    	root = FXMLLoader.load(getClass().getResource("Profile_window.fxml"));
-	    	scene1= new Scene(root);
-	        appStage.setScene(scene1);
+	    	
+	    	profileView= new Scene(root);
+	    appStage.setScene(profileView);
 	    	appStage.setTitle("Profile");
-	        appStage.setScene(scene1);
-	        appStage.show();	
+	    	appStage.setScene(profileView);
+	    	appStage.show();	
 		
 		
 	}
