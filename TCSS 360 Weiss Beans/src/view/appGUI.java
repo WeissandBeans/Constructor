@@ -1,5 +1,9 @@
 package view;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
 import javax.swing.JOptionPane;
 
 import javafx.application.Application;
@@ -48,30 +52,35 @@ public class appGUI extends Application {
     	
     		Parent root;
     		root = FXMLLoader.load(getClass().getResource("Main_Window.fxml"));
+    		currentScene = new Scene(root);
     		
-    		
-    		
-    		profileController profileC = new profileController();
-		profileView = profileC.profileView;
-		
-    		loginController loginC = new loginController();
-    		loginView = loginC.loginView;
-    		
-    		ProjectListView projectLV = new ProjectListView();
-    		
-    		loginC.start(appStage);
-
+    		myStage.setScene(currentScene);
+    		myStage.show();
 	}
     
     
-    protected void setScene(Scene scene) {
-		myStage.setScene(scene);
+    protected static void setScene(URL viewURL) {
+    	Parent root;
+    	try {
+			root = FXMLLoader.load(viewURL);
+			myStage.setScene(new Scene(root));
+			myStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
     
     @FXML
     private void aboutButtonAction(ActionEvent event) {
         // Button was clicked, do something
         showAboutScreen(VERSION);
+    }
+    
+    @FXML
+    void startButtonAction(ActionEvent event) {
+    	appGUI.setScene(getClass().getResource("login_window.fxml"));
+    	
     }
     
     private void showAboutScreen(String version) {
