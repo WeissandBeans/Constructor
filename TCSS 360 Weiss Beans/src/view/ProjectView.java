@@ -15,7 +15,7 @@ import javafx.scene.Parent;
 
 public class ProjectView {
 	
-	 @FXML
+	 	@FXML
 	    private Button btnEditProject;
 
 	    @FXML
@@ -31,7 +31,7 @@ public class ProjectView {
 
 	    @FXML
 	    void btnEditProjectAction(ActionEvent event) {
-
+	    	appGUI.setScene(getClass().getResource("createProjectView.fxml"));
 	    }
 
 	    @FXML
@@ -41,7 +41,7 @@ public class ProjectView {
 
 	    @FXML
 	    void btnBackAction(ActionEvent event) {
-
+	    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
 	    }
 
 }

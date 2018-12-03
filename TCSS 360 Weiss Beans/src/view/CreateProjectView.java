@@ -49,7 +49,7 @@ public class CreateProjectView {
 
     @FXML
     void brnCompleteProject(ActionEvent event) {
-
+    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
     }
 
     @FXML
