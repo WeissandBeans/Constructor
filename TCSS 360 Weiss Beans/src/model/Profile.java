@@ -17,6 +17,16 @@ import java.util.Scanner;
 public class Profile {
 	
 	private static final String INVALID_FORMAT = "Invalid File Format.";
+	private static final String DELIMETER = ":";
+	private static final String INTEGER_REGEX = "\\d+";
+	private static final String FLOAT_REGEX = "^-?\\d*\\.{0,1}\\d+$";
+	private static final String FORMAT_NAME = "#NAME";
+	private static final String FORMAT_DESC = "#DESCRIPTION";
+	private static final String FORMAT_PROJ_COUNT = "#PROJECTS";
+	private static final String FORMAT_COMPLETED = "#COMPLETED";
+	private static final String FORMAT_SAVINGS = "#SAVINGS";
+	
+	
 	
 	// Instance Fields for what a profile should contain.
 	// General profile descriptors and information.
@@ -98,21 +108,37 @@ public class Profile {
 	}
 	
 	
-	// Method to export a user's profile. It will write the information about
-	// a user's profile to a file called "user_profile".txt and that document
-	// can be loaded again to transfer user information.
-	private static void exportProfile() throws IOException {
-		PrintWriter outfile = new PrintWriter(new FileWriter("user_profile.txt"));
+	// Method to save a user's profile. It will write the information about
+	// a user's profile to a file called "save_profile.txt" and that document
+	// can be loaded again to transfer user information, or default load this
+	// profile on start up.
+	private static void saveProfile() throws IOException {
+		PrintWriter outfile = new PrintWriter(new FileWriter("save_profile.txt"));
 		
-		outfile.println("#NAME:" + getProfileName());
-		outfile.println("#DESCRIPTION:" + getProfileDesc());
-		outfile.println("#PROJECTS:" + getProjectCount());
-		outfile.println("#COMPLETED:" + getCompletedCount());
-		outfile.println("#SAVINGS:" + getSavings());
+		outfile.println(FORMAT_NAME + DELIMETER + getProfileName());
+		outfile.println(FORMAT_DESC + DELIMETER + getProfileDesc());
+		outfile.println(FORMAT_PROJ_COUNT + DELIMETER + getProjectCount());
+		outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
+		outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
 		
 		outfile.close();
 	}
 	
+	
+	// Method to export a user's profile. It will write the information about
+	// a user's profile to a file called "export_profile.txt" and that document
+	// can be loaded again to transfer user information.
+	private static void exportProfile() throws IOException {
+		PrintWriter outfile = new PrintWriter(new FileWriter("export_profile.txt"));
+
+		outfile.println(FORMAT_NAME + DELIMETER + getProfileName());
+		outfile.println(FORMAT_DESC + DELIMETER + getProfileDesc());
+		outfile.println(FORMAT_PROJ_COUNT + DELIMETER + getProjectCount());
+		outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
+		outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
+
+		outfile.close();
+	}
 	
 	
 	// Method to load a user's profile. Parse through a given text file and
@@ -129,19 +155,19 @@ public class Profile {
 		while (infile.hasNextLine()) {
 			final String line = infile.nextLine();
 			
-			if (line.startsWith("#NAME")) {				
+			if (line.startsWith(FORMAT_NAME)) {				
 				name = parseString(line);
 				setProfileName(name);
-			} else if (line.startsWith("#DESCRIPTION")) {
+			} else if (line.startsWith(FORMAT_DESC)) {
 				description = parseString(line);
 				setProfileDesc(description);
-			} else if (line.startsWith("#PROJECTS")) {
+			} else if (line.startsWith(FORMAT_PROJ_COUNT)) {
 				projCount = parseInteger(line);
 				setProjectCount(projCount);
-			} else if (line.startsWith("#COMPLETED")) {
+			} else if (line.startsWith(FORMAT_COMPLETED)) {
 				compCount = parseInteger(line);
 				setCompletedCount(compCount);
-			} else if (line.startsWith("#SAVINGS")) {
+			} else if (line.startsWith(FORMAT_SAVINGS)) {
 				tempSavings = parseBigDecimal(line);
 				setSavings(tempSavings);
 			} else {
@@ -153,7 +179,7 @@ public class Profile {
 	
 	// Method to help parse String objects.
 	private static String parseString(final String line) throws IOException {
-		final String[] parts = line.split(":");
+		final String[] parts = line.split(DELIMETER);
 		if (parts.length != 2) {
 			throw new IOException(INVALID_FORMAT);
 		}
@@ -163,8 +189,8 @@ public class Profile {
 	
 	// Method to help parse integers.
 	private static int parseInteger(final String line) throws IOException {
-		final String[] parts = line.split(":");
-		if (parts.length != 2 || !parts[1].matches("\\d+")) {
+		final String[] parts = line.split(DELIMETER);
+		if (parts.length != 2 || !parts[1].matches(INTEGER_REGEX)) {
 			throw new IOException(INVALID_FORMAT);
 		}
 		return Integer.parseInt(parts[1]);
@@ -173,8 +199,8 @@ public class Profile {
 	
 	// Method to help parse BigDecimal objects.
 	private static BigDecimal parseBigDecimal(final String theLine) throws IOException {
-		final String[] parts = theLine.split(":");
-		if (parts.length != 2 || !parts[1].matches("^-?\\d*\\.{0,1}\\d+$")) {
+		final String[] parts = theLine.split(DELIMETER);
+		if (parts.length != 2 || !parts[1].matches(FLOAT_REGEX)) {
 			throw new IOException(INVALID_FORMAT);
 		}
 		BigDecimal returnVal = new BigDecimal(Double.parseDouble(parts[1]));
