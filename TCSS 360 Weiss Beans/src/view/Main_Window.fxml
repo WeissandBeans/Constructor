@@ -7,7 +7,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.appGUI">
    <children>
-      <Button layoutX="121.0" layoutY="334.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="158.0" text="Start" />
+      <Button fx:id="btnStart" layoutX="121.0" layoutY="334.0" mnemonicParsing="false" onAction="#startButtonAction" prefHeight="40.0" prefWidth="158.0" text="Start" />
       <MenuBar>
         <menus>
           <Menu mnemonicParsing="false" text="Menu">

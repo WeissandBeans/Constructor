@@ -11,28 +11,7 @@ import javafx.stage.Stage;
  * The whole class
  * @author Tien Ortman
  */
-public class profileController extends Application {
-
-	Scene profileView;
-	
-	@Override
-	public void start(Stage appStage) throws Exception {
-		// TODO Auto-generated method stub
-		Parent root;
-	    	root = FXMLLoader.load(getClass().getResource("Profile_window.fxml"));
-	    	
-	    	profileView= new Scene(root);
-	    appStage.setScene(profileView);
-	    	appStage.setTitle("Profile");
-	    	appStage.setScene(profileView);
-	    	appStage.show();	
-		
-		
-	}
-
-	
-	
-
+public class profileController {
 
 	    @FXML
 	    private Label total;

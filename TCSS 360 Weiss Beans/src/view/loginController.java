@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class loginController extends appGUI {
+public class loginController {
 	
     @FXML
     private Button btnNew;
@@ -22,31 +22,5 @@ public class loginController extends appGUI {
     private Button btnCurrent;
     
 	Scene loginView;
-	
-	@Override
-	public void start(Stage appStage) throws Exception {
-
-		Parent root;
-	    	root = FXMLLoader.load(getClass().getResource("login_window.fxml"));
-	    	
-	    	loginView = new Scene(root);
-	    	appStage.setScene(loginView);
-	    	appStage.setTitle("Log-in");
-	    	appStage.setScene(loginView);
-	    	appStage.show();	
-	    	
-	    	btnCurrent.setOnAction((event) -> {
-	    		setScene(super.profileView);
-	    	});
-	   
-	}
-	
-	protected void setScene(Scene scene) {
-		super.setScene(scene);
-	}
-
-    public static void main(String args[]) {
-    		launch(args);
-    }
 
 }
