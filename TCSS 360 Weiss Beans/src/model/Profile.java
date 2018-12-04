@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Profile {
@@ -39,6 +40,10 @@ public class Profile {
 	private static int completedProjectCount;
 	
 	private static BigDecimal savings;
+	
+	private ArrayList<Project> projects;
+	
+	private ArrayList<Project> completedProjects;
 	
 	// Default Constructor
 	public Profile() {
@@ -105,6 +110,33 @@ public class Profile {
 	
 	public static void setSavings(final BigDecimal savings) {
 		Profile.savings = savings.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+	}
+	
+	public void addProject(Project p) {
+		projects.add(p);
+	}
+	
+	public Project removeProject(Project p) {
+		projects.remove(p);
+		return p;
+	}
+	
+	public ArrayList<Project> getProjects() {
+		return projects;
+	}
+	
+	public void setProjectComplete(Project p) {
+		completedProjects.add(p);
+		removeProject(p);
+	}
+	
+	public Project removeCompletedProject(Project p) {
+		completedProjects.remove(p);
+		return p;
+	}
+	
+	public ArrayList<Project> getCompletedProjects() {
+		return completedProjects;
 	}
 	
 	
