@@ -1,6 +1,7 @@
 package view;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,17 +11,24 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class loginController {
+public class LoginView {
 	
     @FXML
     private Button btnNew;
 
     @FXML
     private Button btnLoad;
-
+    
     @FXML
     private Button btnCurrent;
     
+    @FXML
+    void currentButtonAction(ActionEvent event) {
+    	appGUI.setScene(getClass().getResource("Profile_window.fxml"));
+    }
+    
 	Scene loginView;
+	
+	
 
 }
