@@ -59,51 +59,51 @@ public class Profile {
 	}
 	
 	// Accessor and Mutator for profileName.
-	private static String getProfileName() {
+	public static String getProfileName() {
 		return profileName;
 	}
 	
-	private static void setProfileName(final String profileName) {
+	public static void setProfileName(final String profileName) {
 		Profile.profileName = profileName;
 	}
 
 	
 	// Accessor and Mutator for profileDesc.
-	private static String getProfileDesc() {
+	public static String getProfileDesc() {
 		return profileDesc;
 	}
 	
-	private static void setProfileDesc(final String profileDesc) {
+	public static void setProfileDesc(final String profileDesc) {
 		Profile.profileDesc = profileDesc;
 	}
 	
 	
 	// Accessor and Mutator for projectCount.
-	private static int getProjectCount() {
+	public static int getProjectCount() {
 		return projectCount;
 	}
 	
-	private static void setProjectCount(final int projectCount) {
+	public static void setProjectCount(final int projectCount) {
 		Profile.projectCount = projectCount;
 	}
 	
 	
 	// Accessor and Mutator for completedProjectCount.
-	private static int getCompletedCount() {
+	public static int getCompletedCount() {
 		return completedProjectCount;
 	}
 	
-	private static void setCompletedCount(final int compProjCount) {
+	public static void setCompletedCount(final int compProjCount) {
 		Profile.completedProjectCount = compProjCount;
 	}
 	
 	
 	// Accessor and Mutator for savings.
-	private static BigDecimal getSavings() {
+	public static BigDecimal getSavings() {
 		return savings;
 	}
 	
-	private static void setSavings(final BigDecimal savings) {
+	public static void setSavings(final BigDecimal savings) {
 		Profile.savings = savings.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 	}
 	
@@ -112,7 +112,7 @@ public class Profile {
 	// a user's profile to a file called "save_profile.txt" and that document
 	// can be loaded again to transfer user information, or default load this
 	// profile on start up.
-	private static void saveProfile() throws IOException {
+	public static void saveProfile() throws IOException {
 		PrintWriter outfile = new PrintWriter(new FileWriter("save_profile.txt"));
 		
 		outfile.println(FORMAT_NAME + DELIMETER + getProfileName());
@@ -128,7 +128,7 @@ public class Profile {
 	// Method to export a user's profile. It will write the information about
 	// a user's profile to a file called "export_profile.txt" and that document
 	// can be loaded again to transfer user information.
-	private static void exportProfile() throws IOException {
+	public static void exportProfile() throws IOException {
 		PrintWriter outfile = new PrintWriter(new FileWriter("export_profile.txt"));
 
 		outfile.println(FORMAT_NAME + DELIMETER + getProfileName());
@@ -144,7 +144,7 @@ public class Profile {
 	// Method to load a user's profile. Parse through a given text file and
 	// turn information into parameters to be entered to build a user's profile
 	// given the information.
-	private static void loadProfile(final Scanner infile) throws IOException {
+	public static void loadProfile(final Scanner infile) throws IOException {
 		
 		String name = "";
 		String description = "";
@@ -211,8 +211,10 @@ public class Profile {
 	// toString method for developers only, mostly to aid with
 	// debugging and testing.
 	public String toString() {
-		return "Name: " + getProfileName() + "\nDescription: " + getProfileDesc()
-				+ "\nProject Count: " + getProjectCount() + "\nCompleted Projects: "
-				+ getCompletedCount() + "\nSavings: " + getSavings();
+		return "Name: " + getProfileName()
+		+ "\nDescription: " + getProfileDesc()
+		+ "\nProject Count: " + getProjectCount()
+		+ "\nCompleted Projects: " + getCompletedCount()
+		+ "\nSavings: " + getSavings();
 	}
 }
