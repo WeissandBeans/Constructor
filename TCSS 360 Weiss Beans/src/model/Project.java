@@ -14,6 +14,8 @@ import java.math.BigDecimal;
 
 public class Project {
 	
+	private static final String DELIMETER = ":";
+	
 	//instance fields, everything that will be needed for user to add to a diy project.
 	private String myProjectName;
 	
@@ -123,16 +125,13 @@ public class Project {
 	
 	@Override
 	public String toString() {
-		String str = "********* Project Info *********";
-		str += "\nProject Name: " + getName();
-		str += "\nProject Description: " + getDescription();
-		str += "\nProject Cost: " + getCost();
-		str += "\nProject Savings: " + getSavings();
-		str += "\nProject Energy Savings: " + getEnergySavings();
-		str += "\nProject Notes: " + getNotes();
-		str += "\nProject Materials: " + getMaterial();
-		
-		return str;
+		return getName()
+				+ DELIMETER + getDescription()
+				+ DELIMETER + getCost()
+				+ DELIMETER + getSavings()
+				+ DELIMETER + getEnergySavings()
+				+ DELIMETER + getNotes()
+				+ DELIMETER + getMaterial();
 	}
 	
 }
