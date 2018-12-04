@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 
 public class Project {
 	
+	// Constant for splitting at ":"
 	private static final String DELIMETER = ":";
 	
 	//instance fields, everything that will be needed for user to add to a diy project.
