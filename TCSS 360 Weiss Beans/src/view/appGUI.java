@@ -30,24 +30,31 @@ import javafx.scene.Parent;
  *
  * @author Harrison
  * @editor Tien
+ * @editor Samantha
  */
                       
 
 public class appGUI extends Application {
+	
+	String PROFILE_PATH = "./Profiles";
 
-	static Stage myStage;
+	private static Stage myStage;
 	Scene currentScene;
 	Scene loginView;
 	protected Scene profileView;
 	Scene projectListView;
 	Scene projectView;
 	Button btnAbout;
+	private static model.Profile user;
 
 	private final String VERSION = "0.0.1";
 	
 	//initialization code for the javaFX application
     @Override
 	public void start(Stage appStage) throws Exception {
+    	
+    		boolean newProfileFolder = new File(PROFILE_PATH).mkdirs();
+    	
     		myStage = appStage;
     	
     		Parent root;
@@ -88,6 +95,10 @@ public class appGUI extends Application {
     										+ version);
     }
     
+    
+    protected static model.Profile getUser() {
+    	return user;
+    }
     
 
 

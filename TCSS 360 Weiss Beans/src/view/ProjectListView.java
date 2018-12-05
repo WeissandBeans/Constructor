@@ -1,4 +1,11 @@
+/**
+ *
+ * @author Samantha
+ */
+
 package view;
+import java.math.BigDecimal;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,20 +26,26 @@ public class ProjectListView {
 	
 	//TODO: Table views should represent objects
 	
+	public void initialize() {
+       model.Profile user = appGUI.getUser();
+       //for each project in user
+       //populate the table with that project data!
+    }
+	
     @FXML
-    private TableColumn<?, ?> colName;
+    private TableColumn<TableView<model.Project>, String> colName;
 
     @FXML
-    private TableColumn<?, ?> colSavings;
+    private TableColumn<TableView<model.Project>, BigDecimal> colSavings;
 
     @FXML
-    private TableView<?> tblProjects;
+    private TableView<model.Project> tblProjects;
 
     @FXML
-    private TableColumn<?, ?> colCost;
+    private TableColumn<TableView<model.Project>, BigDecimal> colCost;
 
     @FXML
-    private TableColumn<?, ?> colMaterials;
+    private TableColumn<TableView<model.Project>, String> colMaterials;
 
     @FXML
     private Button btnAddProject;
