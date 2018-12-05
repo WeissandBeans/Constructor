@@ -1,11 +1,15 @@
 package view;
 
+import java.math.BigDecimal;
+
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import model.Profile;
@@ -17,12 +21,11 @@ public class ProfileView {
 		Profile myProfile = new Profile();
 		
 		//String myName = myProfile.getProfileName();
-		//int myComplete = myProfile.getClass().getSavings();
-		//int mySavings = myProfile.getClass().getCompletedCount();
-		//int myCount = myProfile.getClass().getProjectCount();
+		String myComplete = String.valueOf(myProfile.getSavings());
+		String mySavings = String.valueOf(myProfile.getCompletedCount());
+		String myCount = String.valueOf(myProfile.getProjectCount());
 		
-		
-		
+		String myName = "Tien Ortman";
 
 		
 		
@@ -57,11 +60,20 @@ public class ProfileView {
 		@FXML
 		private void initialize() {
 			
-			//lblName.setText(myName);
-			//lblCompleteCount.setText(myComplete);
-			//lblgetProjectCount.setText(myCount);
-			//lblSavings.setText(mySavings);
+			lblName.setText(myName);
+			lblCompleteCount.setText(myComplete);
+			lblgetProjectCount.setText(myCount);
+			lblSavings.setText(mySavings);
 		}
+		
+	    @FXML
+	    private Button goToProjects;
+	    
+
+	    @FXML
+	    void goToProjectScene(ActionEvent event) {
+	    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
+	    }
 		
 		
 //    public static void main(String args[]) {

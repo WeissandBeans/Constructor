@@ -27,6 +27,12 @@ public class LoginView {
     	appGUI.setScene(getClass().getResource("Profile_window.fxml"));
     }
     
+    @FXML
+    void newUserBtn(ActionEvent event) {
+    	appGUI.setScene(getClass().getResource("new_user_window.fxml"));
+
+    }
+    
 	Scene loginView;
 	
 	
