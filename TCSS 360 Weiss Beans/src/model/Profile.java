@@ -26,6 +26,7 @@ public class Profile {
 	private static final String FORMAT_PROJ_COUNT = "#PROJECTS";
 	private static final String FORMAT_COMPLETED = "#COMPLETED";
 	private static final String FORMAT_SAVINGS = "#SAVINGS";
+	private static final String FORMAT_EMAIL = "#EMAIL";
 	
 	
 	
@@ -45,6 +46,8 @@ public class Profile {
 	
 	private ArrayList<Project> completedProjects;
 	
+	private static String profileEmail;
+	
 	// Default Constructor
 	public Profile() {
 		setProfileName("");
@@ -52,15 +55,17 @@ public class Profile {
 		setProjectCount(0);
 		setCompletedCount(0);
 		setSavings(new BigDecimal(0));
+		setEmail("");
 	}
 	
 	public Profile(String profileName, String profileDesc, int projCount,
-			int compProjCount, BigDecimal savings) {
+			int compProjCount, BigDecimal savings, String profileEmail) {
 		setProfileName(profileName);
 		setProfileDesc(profileDesc);
 		setProjectCount(projCount);
 		setCompletedCount(compProjCount);
 		setSavings(savings);
+		setEmail(profileEmail);
 	}
 	
 	// Accessor and Mutator for profileName.
@@ -117,6 +122,15 @@ public class Profile {
 		Profile.savings.add(savings.setScale(2, BigDecimal.ROUND_HALF_EVEN));
 	}
 	
+	// Accessor and Mutator for profileName.
+	public static String getEmail() {
+		return profileEmail;
+	}
+
+	public static void setEmail(final String profileEmail) {
+		Profile.profileName = profileEmail;
+	}
+
 	public void addProject(Project p) {
 		projects.add(p);
 	}
@@ -157,6 +171,7 @@ public class Profile {
 		outfile.println(FORMAT_PROJ_COUNT + DELIMETER + getProjectCount());
 		outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
 		outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
+		outfile.println(FORMAT_EMAIL + DELIMETER + getEmail());
 		
 		outfile.close();
 	}
@@ -173,6 +188,7 @@ public class Profile {
 		outfile.println(FORMAT_PROJ_COUNT + DELIMETER + getProjectCount());
 		outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
 		outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
+		outfile.println(FORMAT_EMAIL + DELIMETER + getEmail());
 
 		outfile.close();
 	}
@@ -188,6 +204,7 @@ public class Profile {
 		int projCount = 0;
 		int compCount = 0;
 		BigDecimal tempSavings = new BigDecimal(0);
+		String email = "";
 		
 		while (infile.hasNextLine()) {
 			final String line = infile.nextLine();
@@ -207,6 +224,9 @@ public class Profile {
 			} else if (line.startsWith(FORMAT_SAVINGS)) {
 				tempSavings = parseBigDecimal(line);
 				setSavings(tempSavings);
+			} else if (line.startsWith(FORMAT_EMAIL)) {
+				email = parseString(line);
+				setEmail(email);
 			} else {
 				throw new IOException();
 			}
@@ -252,6 +272,7 @@ public class Profile {
 		+ "\nDescription: " + getProfileDesc()
 		+ "\nProject Count: " + getProjectCount()
 		+ "\nCompleted Projects: " + getCompletedCount()
-		+ "\nSavings: " + getSavings();
+		+ "\nSavings: " + getSavings()
+		+ "\nEmail: " + getEmail();
 	}
 }
