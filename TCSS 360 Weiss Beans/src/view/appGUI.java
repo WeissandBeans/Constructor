@@ -35,6 +35,8 @@ import javafx.scene.Parent;
                       
 
 public class appGUI extends Application {
+	
+	String PROFILE_PATH = "./Profiles";
 
 	private static Stage myStage;
 	Scene currentScene;
@@ -50,6 +52,9 @@ public class appGUI extends Application {
 	//initialization code for the javaFX application
     @Override
 	public void start(Stage appStage) throws Exception {
+    	
+    		boolean newProfileFolder = new File(PROFILE_PATH).mkdirs();
+    	
     		myStage = appStage;
     	
     		Parent root;
