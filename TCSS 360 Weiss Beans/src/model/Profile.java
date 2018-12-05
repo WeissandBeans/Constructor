@@ -112,6 +112,11 @@ public class Profile {
 		Profile.savings = savings.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 	}
 	
+	// Method to add total savings of projects.
+	public static void addSavings(final BigDecimal savings) {
+		Profile.savings.add(savings.setScale(2, BigDecimal.ROUND_HALF_EVEN));
+	}
+	
 	public void addProject(Project p) {
 		projects.add(p);
 	}
