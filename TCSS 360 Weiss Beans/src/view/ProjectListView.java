@@ -25,7 +25,9 @@ import javafx.scene.control.TableView;
 public class ProjectListView {
 	
 	//TODO: Table views should represent objects
-	
+	/**
+     * @author Samantha
+     */
 	public void initialize() {
        model.Profile user = appGUI.getUser();
        //for each project in user
@@ -50,6 +52,9 @@ public class ProjectListView {
     @FXML
     private Button btnAddProject;
 
+    /**
+     * @author Samantha
+     */
     @FXML
     void addProjectAction(ActionEvent event) {
 

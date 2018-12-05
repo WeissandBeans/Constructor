@@ -51,6 +51,9 @@ public class appGUI extends Application {
 	
 	//initialization code for the javaFX application
     @Override
+    /**
+     * @author Samantha
+     */
 	public void start(Stage appStage) throws Exception {
     	
     		boolean newProfileFolder = new File(PROFILE_PATH).mkdirs();
@@ -66,6 +69,9 @@ public class appGUI extends Application {
 	}
     
     
+    /**
+     * @author Samantha
+     */
     protected static void setScene(URL viewURL) {
     	Parent root;
     	try {
@@ -78,24 +84,37 @@ public class appGUI extends Application {
 		}
 	}
     
+    
+    /**
+     * @author Samantha
+     */
     @FXML
     private void aboutButtonAction(ActionEvent event) {
         // Button was clicked, do something
         showAboutScreen(VERSION);
     }
     
+    /**
+     * @author Samantha
+     */
     @FXML
     void startButtonAction(ActionEvent event) {
     	appGUI.setScene(getClass().getResource("login_window.fxml"));
     	
     }
     
+    /**
+     * @author Samantha
+     */
+    @FXML
     private void showAboutScreen(String version) {
     		JOptionPane.showMessageDialog(null, "Constructor\n By Weiss and Beans Team\n Version: " 
     										+ version);
     }
     
-    
+    /**
+     * @author Samantha
+     */
     protected static model.Profile getUser() {
     	return user;
     }
