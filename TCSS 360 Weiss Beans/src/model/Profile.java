@@ -8,6 +8,7 @@
  */
 package model;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,12 +51,7 @@ public class Profile {
 	
 	// Default Constructor
 	public Profile() {
-		setProfileName("");
-		setProfileDesc("");
-		setProjectCount(0);
-		setCompletedCount(0);
-		setSavings(new BigDecimal(0));
-		setEmail("");
+		defaultParamsLoad();
 	}
 	
 	public Profile(String profileName, String profileDesc, int projCount,
@@ -70,91 +66,110 @@ public class Profile {
 	
 	// Accessor and Mutator for profileName.
 	public static String getProfileName() {
+		saveProfile();
 		return profileName;
 	}
 	
 	public static void setProfileName(final String profileName) {
+		saveProfile();
 		Profile.profileName = profileName;
 	}
 
 	
 	// Accessor and Mutator for profileDesc.
 	public static String getProfileDesc() {
+		saveProfile();
 		return profileDesc;
 	}
 	
 	public static void setProfileDesc(final String profileDesc) {
+		saveProfile();
 		Profile.profileDesc = profileDesc;
 	}
 	
 	
 	// Accessor and Mutator for projectCount.
 	public static int getProjectCount() {
+		saveProfile();
 		return projectCount;
 	}
 	
 	public static void setProjectCount(final int projectCount) {
+		saveProfile();
 		Profile.projectCount = projectCount;
 	}
 	
 	
 	// Accessor and Mutator for completedProjectCount.
 	public static int getCompletedCount() {
+		saveProfile();
 		return completedProjectCount;
 	}
 	
 	public static void setCompletedCount(final int compProjCount) {
+		saveProfile();
 		Profile.completedProjectCount = compProjCount;
 	}
 	
 	
 	// Accessor and Mutator for savings.
 	public static BigDecimal getSavings() {
+		saveProfile();
 		return savings;
 	}
 	
 	public static void setSavings(final BigDecimal savings) {
+		saveProfile();
 		Profile.savings = savings.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 	}
 	
 	// Method to add total savings of projects.
 	public static void addSavings(final BigDecimal savings) {
+		saveProfile();
 		Profile.savings.add(savings.setScale(2, BigDecimal.ROUND_HALF_EVEN));
 	}
 	
 	// Accessor and Mutator for profileName.
 	public static String getEmail() {
+		saveProfile();
 		return profileEmail;
 	}
 
 	public static void setEmail(final String profileEmail) {
+		saveProfile();
 		Profile.profileName = profileEmail;
 	}
 
 	public void addProject(Project p) {
+		saveProfile();
 		projects.add(p);
 	}
 	
 	public Project removeProject(Project p) {
+		saveProfile();
 		projects.remove(p);
 		return p;
 	}
 	
 	public ArrayList<Project> getProjects() {
+		saveProfile();
 		return projects;
 	}
 	
 	public void setProjectComplete(Project p) {
+		saveProfile();
 		completedProjects.add(p);
 		removeProject(p);
 	}
 	
 	public Project removeCompletedProject(Project p) {
+		saveProfile();
 		completedProjects.remove(p);
 		return p;
 	}
 	
 	public ArrayList<Project> getCompletedProjects() {
+		saveProfile();
 		return completedProjects;
 	}
 	
@@ -163,17 +178,21 @@ public class Profile {
 	// a user's profile to a file called "save_profile.txt" and that document
 	// can be loaded again to transfer user information, or default load this
 	// profile on start up.
-	public static void saveProfile() throws IOException {
-		PrintWriter outfile = new PrintWriter(new FileWriter("save_profile.txt"));
-		
-		outfile.println(FORMAT_NAME + DELIMETER + getProfileName());
-		outfile.println(FORMAT_DESC + DELIMETER + getProfileDesc());
-		outfile.println(FORMAT_PROJ_COUNT + DELIMETER + getProjectCount());
-		outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
-		outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
-		outfile.println(FORMAT_EMAIL + DELIMETER + getEmail());
-		
-		outfile.close();
+	public static void saveProfile() {
+		try {
+			PrintWriter outfile = new PrintWriter(new FileWriter("save_profile.txt"));
+
+			outfile.println(FORMAT_NAME + DELIMETER + getProfileName());
+			outfile.println(FORMAT_DESC + DELIMETER + getProfileDesc());
+			outfile.println(FORMAT_PROJ_COUNT + DELIMETER + getProjectCount());
+			outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
+			outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
+			outfile.println(FORMAT_EMAIL + DELIMETER + getEmail());
+
+			outfile.close();
+		} catch (Exception e) {
+			//
+		}
 	}
 	
 	
@@ -181,16 +200,21 @@ public class Profile {
 	// a user's profile to a file called "export_profile.txt" and that document
 	// can be loaded again to transfer user information.
 	public static void exportProfile() throws IOException {
-		PrintWriter outfile = new PrintWriter(new FileWriter("export_profile.txt"));
+		try {
+			PrintWriter outfile = new PrintWriter(
+					new FileWriter(getProfileName() + "_profile.txt"));
 
-		outfile.println(FORMAT_NAME + DELIMETER + getProfileName());
-		outfile.println(FORMAT_DESC + DELIMETER + getProfileDesc());
-		outfile.println(FORMAT_PROJ_COUNT + DELIMETER + getProjectCount());
-		outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
-		outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
-		outfile.println(FORMAT_EMAIL + DELIMETER + getEmail());
+			outfile.println(FORMAT_NAME + DELIMETER + getProfileName());
+			outfile.println(FORMAT_DESC + DELIMETER + getProfileDesc());
+			outfile.println(FORMAT_PROJ_COUNT + DELIMETER + getProjectCount());
+			outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
+			outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
+			outfile.println(FORMAT_EMAIL + DELIMETER + getEmail());
 
-		outfile.close();
+			outfile.close();
+		} catch (Exception e) {
+			//
+		}
 	}
 	
 	
@@ -233,6 +257,16 @@ public class Profile {
 		}
 	}
 	
+	// Method to load "save_profile.txt" if one exists on start up. This is
+	// basically loading existing settings if they exist.
+	public static void loadSaveProfile() throws IOException { 
+		if (new File("save_profile.txt").exists()) {
+			Scanner infile = new Scanner(new File("save_profile.txt"));
+			loadProfile(infile);
+		} else {
+			defaultParamsLoad();
+		}
+	}
 	
 	// Method to help parse String objects.
 	private static String parseString(final String line) throws IOException {
@@ -262,6 +296,15 @@ public class Profile {
 		}
 		BigDecimal returnVal = new BigDecimal(Double.parseDouble(parts[1]));
 		return returnVal;
+	}
+	
+	private static void defaultParamsLoad() {
+		setProfileName("");
+		setProfileDesc("");
+		setProjectCount(0);
+		setCompletedCount(0);
+		setSavings(new BigDecimal(0));
+		setEmail("");
 	}
 	
 	
