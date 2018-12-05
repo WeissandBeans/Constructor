@@ -8,6 +8,7 @@
  */
 package model;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,12 +51,7 @@ public class Profile {
 	
 	// Default Constructor
 	public Profile() {
-		setProfileName("");
-		setProfileDesc("");
-		setProjectCount(0);
-		setCompletedCount(0);
-		setSavings(new BigDecimal(0));
-		setEmail("");
+		defaultParamsLoad();
 	}
 	
 	public Profile(String profileName, String profileDesc, int projCount,
@@ -233,6 +229,16 @@ public class Profile {
 		}
 	}
 	
+	// Method to load "save_profile.txt" if one exists on start up. This is
+	// basically loading existing settings if they exist.
+	public static void loadSaveProfile() throws IOException { 
+		if (new File("save_profile.txt").exists()) {
+			Scanner infile = new Scanner(new File("save_profile.txt"));
+			loadProfile(infile);
+		} else {
+			defaultParamsLoad();
+		}
+	}
 	
 	// Method to help parse String objects.
 	private static String parseString(final String line) throws IOException {
@@ -262,6 +268,15 @@ public class Profile {
 		}
 		BigDecimal returnVal = new BigDecimal(Double.parseDouble(parts[1]));
 		return returnVal;
+	}
+	
+	private static void defaultParamsLoad() {
+		setProfileName("");
+		setProfileDesc("");
+		setProjectCount(0);
+		setCompletedCount(0);
+		setSavings(new BigDecimal(0));
+		setEmail("");
 	}
 	
 	
