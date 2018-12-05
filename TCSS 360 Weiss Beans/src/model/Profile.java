@@ -43,7 +43,7 @@ public class Profile {
 	
 	private static BigDecimal savings;
 	
-	private ArrayList<Project> projects;
+	private static ArrayList<Project> projects;
 	
 	private ArrayList<Project> completedProjects;
 	
@@ -188,7 +188,11 @@ public class Profile {
 			outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
 			outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
 			outfile.println(FORMAT_EMAIL + DELIMETER + getEmail());
-
+			
+			for (int i = 0; i < projects.size(); i++) {
+				outfile.println(projects.get(i).toString());
+			}
+			
 			outfile.close();
 		} catch (Exception e) {
 			//
@@ -210,18 +214,28 @@ public class Profile {
 			outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
 			outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
 			outfile.println(FORMAT_EMAIL + DELIMETER + getEmail());
-
+			
+			for (int i = 0; i < projects.size(); i++) {
+				outfile.println(projects.get(i).toString());
+			}
+			
 			outfile.close();
 		} catch (Exception e) {
 			//
 		}
 	}
 	
+	// Method to load the profile header and all the projects in a single method.
+	// This is mostly for usability.
+	public static void loadProfile(final Scanner infile) throws IOException {
+		loadProfileHeader(infile);
+		loadProjects(infile);
+	}
 	
 	// Method to load a user's profile. Parse through a given text file and
 	// turn information into parameters to be entered to build a user's profile
 	// given the information.
-	public static void loadProfile(final Scanner infile) throws IOException {
+	public static void loadProfileHeader(final Scanner infile) throws IOException {
 		
 		String name = "";
 		String description = "";
@@ -254,6 +268,34 @@ public class Profile {
 			} else {
 				throw new IOException();
 			}
+		}
+	}
+	
+	// Method to parse and load projects, then add them to the arraylist of projects.
+	public static void loadProjects(final Scanner infile) throws IOException {
+		String tempName = "";
+		String tempDesc = "";
+		BigDecimal tempCost = new BigDecimal(0);
+		BigDecimal tempSavings = new BigDecimal(0);
+		String tempMats = "";
+		int tempEnergySavings = 0;
+		String tempNotes = "";
+		
+		while (infile.hasNextLine()) {
+			final String line = infile.nextLine();
+			final String[] parts = line.split(DELIMETER);
+			tempName = parseString(parts[0]);
+			tempDesc = parseString(parts[1]);
+			tempCost = parseBigDecimal(parts[2]);
+			tempSavings = parseBigDecimal(parts[3]);
+			tempMats = parseString(parts[4]);
+			tempEnergySavings = parseInteger(parts[5]);
+			tempNotes = parseString(parts[6]);
+			
+			Project tempProj = new Project(tempName, tempDesc, tempCost, tempSavings,
+											tempMats, tempEnergySavings, tempNotes);
+			
+			projects.add(tempProj);
 		}
 	}
 	
