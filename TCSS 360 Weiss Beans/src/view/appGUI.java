@@ -30,18 +30,20 @@ import javafx.scene.Parent;
  *
  * @author Harrison
  * @editor Tien
+ * @editor Samantha
  */
                       
 
 public class appGUI extends Application {
 
-	static Stage myStage;
+	private static Stage myStage;
 	Scene currentScene;
 	Scene loginView;
 	protected Scene profileView;
 	Scene projectListView;
 	Scene projectView;
 	Button btnAbout;
+	private static model.Profile user;
 
 	private final String VERSION = "0.0.1";
 	
@@ -88,6 +90,10 @@ public class appGUI extends Application {
     										+ version);
     }
     
+    
+    protected static model.Profile getUser() {
+    	return user;
+    }
     
 
 

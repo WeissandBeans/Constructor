@@ -1,3 +1,8 @@
+/**
+ *
+ * @author Samantha
+ */
+
 package view;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
