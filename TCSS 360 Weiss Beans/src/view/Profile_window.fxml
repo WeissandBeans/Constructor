@@ -17,5 +17,6 @@
       <Label fx:id="total" layoutX="44.0" layoutY="118.0" text="Number of Projects" />
       <Label fx:id="completed" layoutX="39.0" layoutY="187.0" text="Completed Projects" />
       <Label fx:id="savings" layoutX="39.0" layoutY="258.0" text="DIY Savings" />
+      <Button fx:id="goToProjects" layoutX="182.0" layoutY="385.0" mnemonicParsing="false" onAction="#goToProjectScene" text="Projects" />
    </children>
 </Pane>
