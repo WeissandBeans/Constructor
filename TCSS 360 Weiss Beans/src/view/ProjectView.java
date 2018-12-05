@@ -29,21 +29,33 @@ public class ProjectView {
 	    @FXML
 	    private Label lblProjectName;
 
+	    /**
+	     * @author Samantha
+	     */
 	    @FXML
 	    void btnDeleteProjectAction(ActionEvent event) {
 
 	    }
 
+	    /**
+	     * @author Samantha
+	     */
 	    @FXML
 	    void btnEditProjectAction(ActionEvent event) {
 
 	    }
 
+	    /**
+	     * @author Samantha
+	     */
 	    @FXML
 	    void brnCompleteProject(ActionEvent event) {
 
 	    }
 
+	    /**
+	     * @author Samantha
+	     */
 	    @FXML
 	    void btnBackAction(ActionEvent event) {
 
