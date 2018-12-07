@@ -29,7 +29,7 @@ public class ProjectListView {
      * @author Samantha
      */
 	public void initialize() {
-       model.Profile user = appGUI.getUser();
+       //model.Profile user = appGUI.getUser();
        //for each project in user
        //populate the table with that project data!
     }

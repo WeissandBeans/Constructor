@@ -85,7 +85,7 @@ public class CreateProjectView {
     	catch (Exception e) {
     		System.out.println("BWRP BRRRRPPP PLACEHOLDER PARSE PROBLEM");
     	}
-    	Project proj = new Project(name, desc, cost, savings, null, notes, savings.intValue());
+    	Project proj = new Project(name, desc, cost, savings, null, savings.intValue(), notes);
     }
 
     
