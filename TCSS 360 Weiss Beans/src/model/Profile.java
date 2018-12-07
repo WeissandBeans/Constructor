@@ -37,15 +37,15 @@ public class Profile {
 	
 	private static String profileDesc;
 	
-	private static int projectCount;
-	
-	private static int completedProjectCount;
+//	private static int projectCount;
+//	
+//	private static int completedProjectCount;
 	
 	private static BigDecimal savings;
 	
 	private static ArrayList<Project> projects;
 	
-	private ArrayList<Project> completedProjects;
+	private static ArrayList<Project> completedProjects;
 	
 	private static String profileEmail;
 	
@@ -54,12 +54,10 @@ public class Profile {
 		defaultParamsLoad();
 	}
 	
-	public Profile(String profileName, String profileDesc, int projCount,
-			int compProjCount, BigDecimal savings, String profileEmail) {
+	public Profile(String profileName, String profileDesc,
+			BigDecimal savings, String profileEmail) {
 		setProfileName(profileName);
 		setProfileDesc(profileDesc);
-		setProjectCount(projCount);
-		setCompletedCount(compProjCount);
 		setSavings(savings);
 		setEmail(profileEmail);
 	}
@@ -88,28 +86,28 @@ public class Profile {
 	}
 	
 	
-	// Accessor and Mutator for projectCount.
-	public static int getProjectCount() {
-		saveProfile();
-		return projectCount;
-	}
-	
-	public static void setProjectCount(final int projectCount) {
-		saveProfile();
-		Profile.projectCount = projectCount;
-	}
-	
-	
-	// Accessor and Mutator for completedProjectCount.
-	public static int getCompletedCount() {
-		saveProfile();
-		return completedProjectCount;
-	}
-	
-	public static void setCompletedCount(final int compProjCount) {
-		saveProfile();
-		Profile.completedProjectCount = compProjCount;
-	}
+//	// Accessor and Mutator for projectCount.
+//	public static int getProjectCount() {
+//		saveProfile();
+//		return projectCount;
+//	}
+//	
+//	public static void setProjectCount(final int projectCount) {
+//		saveProfile();
+//		Profile.projectCount = projectCount;
+//	}
+//	
+//	
+//	// Accessor and Mutator for completedProjectCount.
+//	public static int getCompletedCount() {
+//		saveProfile();
+//		return completedProjectCount;
+//	}
+//	
+//	public static void setCompletedCount(final int compProjCount) {
+//		saveProfile();
+//		Profile.completedProjectCount = compProjCount;
+//	}
 	
 	
 	// Accessor and Mutator for savings.
@@ -182,12 +180,12 @@ public class Profile {
 		try {
 			PrintWriter outfile = new PrintWriter(new FileWriter("save_profile.txt"));
 
-			outfile.println(FORMAT_NAME + DELIMETER + getProfileName());
-			outfile.println(FORMAT_DESC + DELIMETER + getProfileDesc());
-			outfile.println(FORMAT_PROJ_COUNT + DELIMETER + getProjectCount());
-			outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
-			outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
-			outfile.println(FORMAT_EMAIL + DELIMETER + getEmail());
+			outfile.println(FORMAT_NAME + DELIMETER + profileName);
+			outfile.println(FORMAT_DESC + DELIMETER + profileDesc);
+			outfile.println(FORMAT_PROJ_COUNT + DELIMETER + projects.size());
+			outfile.println(FORMAT_COMPLETED + DELIMETER + completedProjects.size());
+			outfile.println(FORMAT_SAVINGS + DELIMETER + savings);
+			outfile.println(FORMAT_EMAIL + DELIMETER + profileEmail);
 			
 			for (int i = 0; i < projects.size(); i++) {
 				outfile.println(projects.get(i).toString());
@@ -208,12 +206,12 @@ public class Profile {
 			PrintWriter outfile = new PrintWriter(
 					new FileWriter(getProfileName() + "_profile.txt"));
 
-			outfile.println(FORMAT_NAME + DELIMETER + getProfileName());
-			outfile.println(FORMAT_DESC + DELIMETER + getProfileDesc());
-			outfile.println(FORMAT_PROJ_COUNT + DELIMETER + getProjectCount());
-			outfile.println(FORMAT_COMPLETED + DELIMETER + getCompletedCount());
-			outfile.println(FORMAT_SAVINGS + DELIMETER + getSavings());
-			outfile.println(FORMAT_EMAIL + DELIMETER + getEmail());
+			outfile.println(FORMAT_NAME + DELIMETER + profileName);
+			outfile.println(FORMAT_DESC + DELIMETER + profileDesc);
+			outfile.println(FORMAT_PROJ_COUNT + DELIMETER + projects.size());
+			outfile.println(FORMAT_COMPLETED + DELIMETER + completedProjects.size());
+			outfile.println(FORMAT_SAVINGS + DELIMETER + savings);
+			outfile.println(FORMAT_EMAIL + DELIMETER + profileEmail);
 			
 			for (int i = 0; i < projects.size(); i++) {
 				outfile.println(projects.get(i).toString());
@@ -255,10 +253,8 @@ public class Profile {
 				setProfileDesc(description);
 			} else if (line.startsWith(FORMAT_PROJ_COUNT)) {
 				projCount = parseInteger(line);
-				setProjectCount(projCount);
 			} else if (line.startsWith(FORMAT_COMPLETED)) {
 				compCount = parseInteger(line);
-				setCompletedCount(compCount);
 			} else if (line.startsWith(FORMAT_SAVINGS)) {
 				tempSavings = parseBigDecimal(line);
 				setSavings(tempSavings);
@@ -343,8 +339,6 @@ public class Profile {
 	private static void defaultParamsLoad() {
 		setProfileName("");
 		setProfileDesc("");
-		setProjectCount(0);
-		setCompletedCount(0);
 		setSavings(new BigDecimal(0));
 		setEmail("");
 	}
@@ -353,11 +347,11 @@ public class Profile {
 	// toString method for developers only, mostly to aid with
 	// debugging and testing.
 	public String toString() {
-		return "Name: " + getProfileName()
-		+ "\nDescription: " + getProfileDesc()
-		+ "\nProject Count: " + getProjectCount()
-		+ "\nCompleted Projects: " + getCompletedCount()
-		+ "\nSavings: " + getSavings()
-		+ "\nEmail: " + getEmail();
+		return "Name: " + profileName
+		+ "\nDescription: " + profileDesc
+		+ "\nProject Count: " + projects.size()
+		+ "\nCompleted Projects: " + completedProjects.size()
+		+ "\nSavings: " + savings
+		+ "\nEmail: " + profileEmail;
 	}
 }
