@@ -22,8 +22,8 @@ public class ProfileView {
 		
 		//String myName = myProfile.getProfileName();
 		String myComplete = String.valueOf(myProfile.getSavings());
-		String mySavings = String.valueOf(myProfile.getCompletedCount());
-		String myCount = String.valueOf(myProfile.getProjectCount());
+		//String mySavings = String.valueOf(myProfile.getCompletedCount());
+		//String myCount = String.valueOf(myProfile.getProjectCount());
 		
 		String myName = "Tien Ortman";
 
@@ -62,8 +62,8 @@ public class ProfileView {
 			
 			lblName.setText(myName);
 			lblCompleteCount.setText(myComplete);
-			lblgetProjectCount.setText(myCount);
-			lblSavings.setText(mySavings);
+			//lblgetProjectCount.setText(myCount);
+			//lblSavings.setText(mySavings);
 		}
 		
 	    @FXML
