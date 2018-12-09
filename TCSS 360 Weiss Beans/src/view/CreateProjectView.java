@@ -86,6 +86,8 @@ public class CreateProjectView {
     		System.out.println("BWRP BRRRRPPP PLACEHOLDER PARSE PROBLEM");
     	}
     	Project proj = new Project(name, desc, cost, savings, null, savings.intValue(), notes);
+    	appGUI.getUser().addProject(proj);
+    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
     }
 
     

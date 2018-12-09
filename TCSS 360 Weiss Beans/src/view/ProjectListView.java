@@ -38,25 +38,31 @@ public class ProjectListView {
 	
 	public void initialize() {
 		projects = FXCollections.observableArrayList();
-       model.Profile user = appGUI.getUser();
-       for(Project p : user.getProjects()) {
-    	   projects.add(p);
-       }
+       //model.Profile user = appGUI.getUser();
+       //for(Project p : user.getProjects()) {
+    //	   projects.add(p);
+    //   }
+		projects.add(new Project("Sample", "test project", new BigDecimal("42.0"), 
+				new BigDecimal("69.0"), null, 69, "PLACEHOLDER"));
        
        colName.setCellValueFactory(
-    		    new PropertyValueFactory<Project,String>("myProjectName")
+    		    new PropertyValueFactory<Project,String>("Name")
     		);
     		//colMaterials.setCellValueFactory(
     		//    new PropertyValueFactory<Project,String>("lastName")
     		//);
     		colCost.setCellValueFactory(
-    		    new PropertyValueFactory<Project,BigDecimal>("myProjectCost")
+    		    new PropertyValueFactory<Project,BigDecimal>("Cost")
     		);
     		colSavings.setCellValueFactory(
-    				new PropertyValueFactory<Project, BigDecimal>("myProjectSavings")
+    				new PropertyValueFactory<Project, BigDecimal>("Savings")
     		);
     		
     	tblProjects.setItems(projects);
+    	//tblProjects.getColumns().clear();
+    	//tblProjects.getColumns().addAll(colName, colCost, colSavings);
+    	
+    	
     }
 	
     @FXML

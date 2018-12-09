@@ -99,7 +99,7 @@ public class appGUI extends Application {
      */
     @FXML
     void startButtonAction(ActionEvent event) {
-    	appGUI.setScene(getClass().getResource("login_window.fxml"));
+    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
     	
     }
     
