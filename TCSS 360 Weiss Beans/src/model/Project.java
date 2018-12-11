@@ -3,6 +3,8 @@
  */
 
 
+package model;
+
 
 import java.math.BigDecimal;
 
@@ -28,7 +30,7 @@ public class Project {
 	
 	private BigDecimal myProjectSavings;
 	
-	private Material myProjectMaterial;
+	private String myProjectMaterial;
 	
 	private int myProjectEnergySavings;
 	
@@ -36,7 +38,7 @@ public class Project {
 	
 	// Project constructor, takes in project name, description, cost, savings, Materials, notes, and energy savings.
 	public Project(final String theName, final String theDescription, final BigDecimal theCost, final BigDecimal theSavings, 
-					final Material theMaterial, final String theNotes, final int theEnergySavings) {
+					final String theMaterial, final int theEnergySavings, final String theNotes) {
 		
 		myProjectName = theName;
 		myProjectDescription = theDescription;
@@ -102,11 +104,11 @@ public class Project {
 	
 	
 	// getter & setter for project materials
-	public Material getMaterial() {
+	public String getMaterial() {
 		return myProjectMaterial;
 	}
 	
-	public void setMaterials(final Material theMaterials) {
+	public void setMaterials(final String theMaterials) {
 		myProjectMaterial = theMaterials;
 	}
 

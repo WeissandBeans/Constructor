@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfileView">
+   <children>
+      <Label fx:id="lblName" layoutX="159.0" layoutY="31.0" text="getName">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lblgetProjectCount" layoutX="44.0" layoutY="149.0" text="999" />
+      <Label fx:id="lblSavings" layoutX="44.0" layoutY="208.0" text="999" />
+      <Label fx:id="lblCompleteCount" layoutX="44.0" layoutY="290.0" text="999" />
+      <Label fx:id="total" layoutX="44.0" layoutY="118.0" text="Number of Projects" />
+      <Label fx:id="completed" layoutX="39.0" layoutY="187.0" text="Completed Projects" />
+      <Label fx:id="savings" layoutX="39.0" layoutY="258.0" text="DIY Savings" />
+      <Button fx:id="goToProjects" layoutX="182.0" layoutY="385.0" mnemonicParsing="false" onAction="#goToProjectScene" text="Projects" />
+   </children>
+</Pane>

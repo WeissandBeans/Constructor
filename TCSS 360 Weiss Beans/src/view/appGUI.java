@@ -1,5 +1,9 @@
 package view;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
 import javax.swing.JOptionPane;
 
 import javafx.application.Application;
@@ -25,44 +29,103 @@ import javafx.scene.Parent;
 /**
  *
  * @author Harrison
+ * @editor Tien
+ * @editor Samantha
  */
                       
 
 public class appGUI extends Application {
+	
+	String PROFILE_PATH = "./Profiles";
 
-	Scene scene1;
-	Scene scene2;
+	private static Stage myStage;
+	Scene currentScene;
+	Scene loginView;
+	protected Scene profileView;
+	Scene projectListView;
+	Scene projectView;
 	Button btnAbout;
+	private static model.Profile user;
+
 	private final String VERSION = "0.0.1";
 	
 	//initialization code for the javaFX application
     @Override
+    /**
+     * @author Samantha
+     */
 	public void start(Stage appStage) throws Exception {
-    	Parent root;
-    	root = FXMLLoader.load(getClass().getResource("Main_Window.fxml"));
-    	scene1= new Scene(root);
-        appStage.setScene(scene1);
-    	appStage.setTitle("Constructor");
-        appStage.setScene(scene1);
-        appStage.show();	
+    	
+    		boolean newProfileFolder = new File(PROFILE_PATH).mkdirs();
+    	
+    		myStage = appStage;
+    	
+    		Parent root;
+    		root = FXMLLoader.load(getClass().getResource("Main_Window.fxml"));
+    		currentScene = new Scene(root);
+    		
+    		myStage.setScene(currentScene);
+    		myStage.show();
 	}
     
+    
+    /**
+     * @author Samantha
+     */
+    protected static void setScene(URL viewURL) {
+    	Parent root;
+    	try {
+			root = FXMLLoader.load(viewURL);
+			myStage.setScene(new Scene(root));
+			myStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+    
+    
+    /**
+     * @author Samantha
+     */
     @FXML
     private void aboutButtonAction(ActionEvent event) {
-        // Button was clicked, do something…
+        // Button was clicked, do something
         showAboutScreen(VERSION);
     }
     
+    /**
+     * @author Samantha
+     */
+    @FXML
+    void startButtonAction(ActionEvent event) {
+    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
+    	
+    }
+    
+    /**
+     * @author Samantha
+     */
+    @FXML
     private void showAboutScreen(String version) {
-    	JOptionPane.showMessageDialog(null, "Constructor\n By Weiss and Beans Team\n Version: " 
+    		JOptionPane.showMessageDialog(null, "Constructor\n By Weiss and Beans Team\n Version: " 
     										+ version);
     }
     
     /**
+     * @author Samantha
+     */
+    protected static model.Profile getUser() {
+    	return user;
+    }
+    
+
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    	launch(args);
+    		launch(args);
     }
     // End of variables declaration     
     
