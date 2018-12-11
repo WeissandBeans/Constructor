@@ -2,6 +2,8 @@
  * TCSS 360 - Project
  */
 
+
+
 import java.math.BigDecimal;
 
 /**
@@ -10,7 +12,12 @@ import java.math.BigDecimal;
  * @version 1
  */
 
+
+
 public class Project {
+	
+	// Constant for splitting at ":"
+	private static final String DELIMETER = ":";
 	
 	//instance fields, everything that will be needed for user to add to a diy project.
 	private String myProjectName;
@@ -41,12 +48,16 @@ public class Project {
 		
 	}
 	
-	//main method to test getters & setters
-//	public static void main(String[] args) {
-//		Project test = new Project("bob", "description bob", new BigDecimal(2.9477867868678678678687), new BigDecimal(5.5555555555), new Material("tool", "mat desc", new BigDecimal(1.456), "mat measure"), "notes bob", 10);
-//		
-//		System.out.println(test.toString());
-//	}
+	// default values
+	public Project() {
+		setName("");
+		setDescription("");
+		setCost(new BigDecimal(0));
+		setSavings(new BigDecimal(0));
+		setMaterials(new Material());
+		setEnergySavings(0);
+		setNotes("");
+	}
 	
 	
 	//getter & setter for project name
@@ -121,16 +132,13 @@ public class Project {
 	
 	@Override
 	public String toString() {
-		String str = "********* Project Info *********";
-		str += "\nProject Name: " + getName();
-		str += "\nProject Description: " + getDescription();
-		str += "\nProject Cost: " + getCost();
-		str += "\nProject Savings: " + getSavings();
-		str += "\nProject Energy Savings: " + getEnergySavings();
-		str += "\nProject Notes: " + getNotes();
-		str += "\nProject Materials: " + getMaterial();
-		
-		return str;
+		return getName()
+				+ DELIMETER + getDescription()
+				+ DELIMETER + getCost()
+				+ DELIMETER + getSavings()
+				+ DELIMETER + getMaterial()
+				+ DELIMETER + getEnergySavings()
+				+ DELIMETER + getNotes();
 	}
 	
 }
