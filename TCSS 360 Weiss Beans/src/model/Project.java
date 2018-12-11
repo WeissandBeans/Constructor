@@ -2,7 +2,9 @@
  * TCSS 360 - Project
  */
 
+
 package model;
+
 
 import java.math.BigDecimal;
 
@@ -11,6 +13,8 @@ import java.math.BigDecimal;
  * @author Dustin Yoo
  * @version 1
  */
+
+
 
 public class Project {
 	
@@ -46,12 +50,16 @@ public class Project {
 		
 	}
 	
-	//main method to test getters & setters
-//	public static void main(String[] args) {
-//		Project test = new Project("bob", "description bob", new BigDecimal(2.9477867868678678678687), new BigDecimal(5.5555555555), new Material("tool", "mat desc", new BigDecimal(1.456), "mat measure"), "notes bob", 10);
-//		
-//		System.out.println(test.toString());
-//	}
+	// default values
+	public Project() {
+		setName("");
+		setDescription("");
+		setCost(new BigDecimal(0));
+		setSavings(new BigDecimal(0));
+		setMaterials(new Material());
+		setEnergySavings(0);
+		setNotes("");
+	}
 	
 	
 	//getter & setter for project name

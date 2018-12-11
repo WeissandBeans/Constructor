@@ -35,12 +35,13 @@ public class Material {
 		
 		}
 	
-	// main method to test getters & setters
-//	public static void main(String[] args) {
-//		Material test = new Material("wrench", "tool for project", new BigDecimal(2.9456), "12mm");
-//		
-//		System.out.println(test.toString());
-//	}
+	//default values
+	public Material() {
+		setName("");
+		setDescription("");
+		setCost(new BigDecimal(0));
+		setMeasurements("");
+	}
 	
 	// getter & setter for material name
 	public String getName() {
