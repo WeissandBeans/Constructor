@@ -21,7 +21,7 @@ import javafx.embed.swing.SwingNode;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 
-public class CreateProjectView {
+public class CreateProjectView extends ProjectBasedController{
 	
 	@FXML
     private Button btnEditProject;

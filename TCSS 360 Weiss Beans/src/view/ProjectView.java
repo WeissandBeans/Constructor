@@ -18,7 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 
-public class ProjectView {
+public class ProjectView extends ProjectBasedController {
 	
 	 @FXML
 	    private Button btnEditProject;
@@ -42,7 +42,7 @@ public class ProjectView {
 	     */
 	    @FXML
 	    void btnEditProjectAction(ActionEvent event) {
-
+	    	 
 	    }
 
 	    /**

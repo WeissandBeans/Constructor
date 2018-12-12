@@ -36,14 +36,20 @@ public class ProjectListView {
 	
 	ObservableList<Project> projects;
 	
+	/**
+	 * Initializes the view.
+	 * Precondition: AppGUI user is not null
+	 * Postcondition: The view is initialized and the projectdata inside of the user is shown
+	 * @author Samantha
+	 */
 	public void initialize() {
 		projects = FXCollections.observableArrayList();
-       //model.Profile user = appGUI.getUser();
-       //for(Project p : user.getProjects()) {
-    //	   projects.add(p);
-    //   }
-		projects.add(new Project("Sample", "test project", new BigDecimal("42.0"), 
-				new BigDecimal("69.0"), null, 69, "PLACEHOLDER"));
+       model.Profile user = appGUI.getUser();
+       for(Project p : user.getProjects()) {
+    	   projects.add(p);
+       }
+		//projects.add(new Project("Sample", "test project", new BigDecimal("42.0"), 
+		//		new BigDecimal("69.0"), null, 69, "PLACEHOLDER"));
        
        colName.setCellValueFactory(
     		    new PropertyValueFactory<Project,String>("Name")
@@ -84,11 +90,29 @@ public class ProjectListView {
     private Button btnAddProject;
 
     /**
+     * Action handler for clicking the "create project" button.
+     * Precondition: The "create project" button is clicked
+     * Postcondition: User is brought to the "Create project" view.
      * @author Samantha
      */
     @FXML
     void addProjectAction(ActionEvent event) {
     	appGUI.setScene(getClass().getResource("CreateProjectView.fxml"));
+    }
+    
+    /**
+     * Action handler for clicks on the project Table
+     * Precondition: The project table is clicked
+     * Postcondition: If applicable, the ProjectView associated with the clicked item is shown
+     * @param event The event associated with the action
+     * @author Samantha
+     */
+    @FXML
+    void tblClickAction(ActionEvent event) {
+    	if (tblProjects.getSelectionModel().getSelectedItem() != null) {
+    		appGUI.setScene(getClass().getResource("ProjectView.fxml"));
+    	}
+    	
     }
 
 }

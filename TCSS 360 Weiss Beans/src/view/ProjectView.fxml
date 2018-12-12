@@ -16,7 +16,7 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <Text layoutX="20.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes/Measurements">
+      <Text layoutX="20.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes">
          <font>
             <Font size="20.0" />
          </font>
@@ -36,5 +36,9 @@
             <Font size="20.0" />
          </font>
       </Text>
+      <Label fx:id="lblNotes" layoutX="20.0" layoutY="123.0" text="notes" />
+      <Label fx:id="lblCost" layoutX="295.0" layoutY="132.0" text="notes" />
+      <Label fx:id="lblSavings" layoutX="290.0" layoutY="306.0" text="notes" />
+      <Label fx:id="lblMats" layoutX="20.0" layoutY="306.0" text="notes" />
    </children>
 </Pane>
