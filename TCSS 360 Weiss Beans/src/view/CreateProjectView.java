@@ -46,24 +46,6 @@ public class CreateProjectView {
     
     @FXML
     private TextField txtDesc;
-
-    
-    /**
-     * @author Samantha
-     */
-    @FXML
-    void btnDeleteProjectAction(ActionEvent event) {
-
-    }
-    
-    /**
-     * @author Samantha
-     */
-    @FXML
-    void btnEditProjectAction(ActionEvent event) {
-
-    }
-
     
     /**
      * @author Samantha
@@ -85,7 +67,7 @@ public class CreateProjectView {
     	catch (Exception e) {
     		System.out.println("BWRP BRRRRPPP PLACEHOLDER PARSE PROBLEM");
     	}
-    	Project proj = new Project(name, desc, cost, savings, null, savings.intValue(), notes);
+    	Project proj = new Project(name, desc, cost, savings, null, notes, savings.intValue());
     	appGUI.getUser().addProject(proj);
     	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
     }
@@ -96,7 +78,7 @@ public class CreateProjectView {
      */
     @FXML
     void btnBackAction(ActionEvent event) {
-
+    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
     }
 
 	
