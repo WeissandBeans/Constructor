@@ -21,7 +21,7 @@ import javafx.embed.swing.SwingNode;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 
-public class CreateProjectView {
+public class CreateProjectView extends ProjectBasedController{
 	
 	@FXML
     private Button btnEditProject;
@@ -48,6 +48,8 @@ public class CreateProjectView {
     private TextField txtDesc;
     
     /**
+     * Event handler for the 'finish' button. This creates a new project
+     * based on the text fields and saves it to the user profile.
      * @author Samantha
      */
     @FXML
@@ -74,6 +76,7 @@ public class CreateProjectView {
 
     
     /**
+     * Event handler for the 'back' button. Returns to the Project List View.
      * @author Samantha
      */
     @FXML

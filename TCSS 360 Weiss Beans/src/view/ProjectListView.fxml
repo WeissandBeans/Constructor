@@ -16,7 +16,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="448.0" prefWidth="366.0">
                <children>
-                  <TableView fx:id="tblProjects" prefHeight="446.0" prefWidth="364.0">
+                  <TableView fx:id="tblProjects" onMouseClicked="#tblClickAction" prefHeight="446.0" prefWidth="364.0">
                     <columns>
                       <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
                       <TableColumn fx:id="colMaterials" prefWidth="75.0" text="Materials" />
