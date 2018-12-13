@@ -71,22 +71,23 @@ public class appGUI extends Application {
     
     /**
      * @author Samantha
-     * @return 
+     * @return The scene that was loaded.
      */
     protected static Object setScene(URL viewURL) {
-    	Parent root;
-    	FXMLLoader loader = new FXMLLoader();
+    	
+    	FXMLLoader loader = new FXMLLoader(viewURL);
     	try {
-			root = loader.load(viewURL);
-			myStage.setScene(new Scene(root));
+    		Parent root;
+    		root = loader.load();
+    		myStage.setScene(new Scene(root));
 			myStage.show();
-			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
     	return loader.getController();
-	}
+    }
     
     
     /**
@@ -103,7 +104,7 @@ public class appGUI extends Application {
      */
     @FXML
     void startButtonAction(ActionEvent event) {
-    	appGUI.setScene(getClass().getResource("login_window.fxml"));
+    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
     	
     }
     

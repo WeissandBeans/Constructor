@@ -26,6 +26,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 public class ProjectListView {
 	
@@ -43,13 +45,13 @@ public class ProjectListView {
 	 * @author Samantha
 	 */
 	public void initialize() {
-		projects = FXCollections.observableArrayList();
-       model.Profile user = appGUI.getUser();
-       for(Project p : user.getProjects()) {
-    	   projects.add(p);
-       }
-		//projects.add(new Project("Sample", "test project", new BigDecimal("42.0"), 
-		//		new BigDecimal("69.0"), null, 69, "PLACEHOLDER"));
+	   projects = FXCollections.observableArrayList();
+       //model.Profile user = appGUI.getUser();
+       //for(Project p : user.getProjects()) {
+    //	   projects.add(p);
+    //   }
+		projects.add(new Project("Sample", "test project", new BigDecimal("42.0"), 
+				new BigDecimal("69.0"), "some stuff", 69, "PLACEHOLDER"));
        
        colName.setCellValueFactory(
     		    new PropertyValueFactory<Project,String>("Name")
@@ -108,9 +110,11 @@ public class ProjectListView {
      * @author Samantha
      */
     @FXML
-    void tblClickAction(ActionEvent event) {
+    void tblClickAction(MouseEvent event) {
     	if (tblProjects.getSelectionModel().getSelectedItem() != null) {
-    		appGUI.setScene(getClass().getResource("ProjectView.fxml"));
+    		ProjectView newView = (ProjectView) appGUI.setScene(getClass().getResource("ProjectView.fxml"));
+    		newView.setProject(tblProjects.getSelectionModel().getSelectedItem());
+    		newView.populate();
     	}
     	
     }
