@@ -30,8 +30,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 public class ProjectListView {
-	
-	//TODO: Table views should represent objects
 	/**
      * @author Samantha
      */
@@ -73,6 +71,7 @@ public class ProjectListView {
     	
     }
 	
+	//Various fields for FXML objects we want access to
     @FXML
     private TableColumn<Project, String> colName;
 
