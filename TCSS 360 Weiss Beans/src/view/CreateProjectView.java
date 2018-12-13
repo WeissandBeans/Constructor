@@ -66,6 +66,8 @@ public class CreateProjectView extends ProjectBasedController{
 
     
     /**
+     * Event handler for the 'finish' button. This creates a new project
+     * based on the text fields and saves it to the user profile.
      * @author Samantha
      */
     @FXML
@@ -92,11 +94,12 @@ public class CreateProjectView extends ProjectBasedController{
 
     
     /**
+     * Event handler for the 'back' button. Returns to the Project List View.
      * @author Samantha
      */
     @FXML
     void btnBackAction(ActionEvent event) {
-
+    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
     }
 
 	

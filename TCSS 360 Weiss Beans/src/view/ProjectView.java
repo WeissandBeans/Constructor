@@ -53,16 +53,34 @@ public class ProjectView extends ProjectBasedController {
 	    @FXML
 	    private Label lblCost;
 
+	    
+	    /**
+	     * Deletes the project being viewed from the user's profile.
+	     * @param event The event associated with the button being pressed.
+	     * @author Samantha
+	     */
 	    @FXML
 	    void btnDeleteProjectAction(ActionEvent event) {
 	    	System.out.println("BALEETED!");
 	    }
 
+	    
+	    /**
+	     * Event handler for the "edit project" button. Opens the create project window 
+	     * to edit the currently viwed project.
+	     * @param event The event associated with the button being pressed
+	     * @author Samantha
+	     */
 	    @FXML
 	    void btnEditProjectAction(ActionEvent event) {
 	    	appGUI.setScene(getClass().getResource("CreateProjectView.fxml"));
 	    }
 
+	    /**
+	     * Event handler for the 'back' button. Returns to the project list.
+	     * @param event The event associated with the button being pressed.
+	     * @author Samantha
+	     */
 	    @FXML
 	    void btnBackAction(ActionEvent event) {
 	    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
