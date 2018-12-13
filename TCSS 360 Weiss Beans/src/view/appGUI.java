@@ -35,6 +35,10 @@ import javafx.scene.Parent;
                       
 
 public class appGUI extends Application {
+	/**
+	 * The main stage for this application.
+	 */
+	
 	
 	String PROFILE_PATH = "./Profiles";
 
@@ -49,9 +53,10 @@ public class appGUI extends Application {
 
 	private final String VERSION = "0.0.1";
 	
-	//initialization code for the javaFX application
     @Override
     /**
+     * Starts the application and sets up the initial scene.
+     * Inherited from the Application class.
      * @author Samantha
      */
 	public void start(Stage appStage) throws Exception {
@@ -70,22 +75,30 @@ public class appGUI extends Application {
     
     
     /**
+     * Loads and sets the scene associated with the given URL.
      * @author Samantha
+     * @param viewURL The URL for the FXML scene file to load.
+     * @return The scene that was loaded.
      */
-    protected static void setScene(URL viewURL) {
-    	Parent root;
+    protected static Object setScene(URL viewURL) {
+    	
+    	FXMLLoader loader = new FXMLLoader(viewURL);
     	try {
-			root = FXMLLoader.load(viewURL);
-			myStage.setScene(new Scene(root));
+    		Parent root;
+    		root = loader.load();
+    		myStage.setScene(new Scene(root));
 			myStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+
+    	return loader.getController();
+    }
     
     
     /**
+     * Handler for About button. Shows program information.
      * @author Samantha
      */
     @FXML
@@ -95,6 +108,7 @@ public class appGUI extends Application {
     }
     
     /**
+     * Handler for the Start button. Moves to the entry point for the application.
      * @author Samantha
      */
     @FXML
@@ -104,6 +118,7 @@ public class appGUI extends Application {
     }
     
     /**
+     * Event handler to show the about screen.
      * @author Samantha
      */
     @FXML
@@ -113,6 +128,7 @@ public class appGUI extends Application {
     }
     
     /**
+     * Returns the current user profile. for this application.
      * @author Samantha
      */
     protected static model.Profile getUser() {
@@ -122,12 +138,15 @@ public class appGUI extends Application {
 
 
     /**
+     * Main method. Since this is a javaFX application, it just calls launch().
+     * To change what the application does at launch, 
+     * edit appGUI.Start instead.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
     		launch(args);
     }
-    // End of variables declaration     
+ 
     
     
 	
