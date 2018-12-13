@@ -18,10 +18,9 @@ import model.Profile;
  * @author Tien Ortman
  */
 public class ProfileView {
-		Profile myProfile = new Profile();
 		
 		//String myName = myProfile.getProfileName();
-		String myComplete = String.valueOf(myProfile.getSavings());
+		String myComplete = String.valueOf(Profile.getSavings());
 		//String mySavings = String.valueOf(myProfile.getCompletedCount());
 		//String myCount = String.valueOf(myProfile.getProjectCount());
 		
@@ -60,8 +59,9 @@ public class ProfileView {
 		@FXML
 		private void initialize() {
 			
-			lblName.setText(myName);
-			lblCompleteCount.setText(myComplete);
+			lblName.setText(Profile.getProfileName());
+			//lblCompleteCount.setText(myComplete);
+			
 			//lblgetProjectCount.setText(myCount);
 			//lblSavings.setText(mySavings);
 		}

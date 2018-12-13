@@ -44,19 +44,18 @@ public class ProjectListView {
 	 */
 	public void initialize() {
 	   projects = FXCollections.observableArrayList();
-       //model.Profile user = appGUI.getUser();
-       //for(Project p : user.getProjects()) {
-    //	   projects.add(p);
-    //   }
-		projects.add(new Project("Sample", "test project", new BigDecimal("42.0"), 
-				new BigDecimal("69.0"), "some stuff", 69, "PLACEHOLDER"));
+       model.Profile user = appGUI.getUser();
+       for(Project p : user.getProjects()) {
+    	   projects.add(p);
+       }
        
        colName.setCellValueFactory(
     		    new PropertyValueFactory<Project,String>("Name")
     		);
-    		//colMaterials.setCellValueFactory(
-    		//    new PropertyValueFactory<Project,String>("lastName")
-    		//);
+    		colMaterials.setCellValueFactory(
+    		    new PropertyValueFactory<Project,String>("Description")
+    		);
+    		colMaterials.setText("Description");
     		colCost.setCellValueFactory(
     		    new PropertyValueFactory<Project,BigDecimal>("Cost")
     		);

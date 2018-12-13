@@ -47,6 +47,20 @@ public class CreateProjectView extends ProjectBasedController{
     @FXML
     private TextField txtDesc;
     
+    private boolean editing = false;
+    
+    
+	public void populate(){
+    	txtProjectName.setText(this.project.getName());
+    	txtNotes.setText(this.project.getNotes());
+    	txtSavings.setText(this.project.getSavings().toString());
+    	txtCost.setText(this.project.getCost().toString());
+    	txtDesc.setText(this.project.getDescription());
+    	editing = true;
+    	//lblMats.setText(this.project.getMaterial().getName());
+    }
+    
+    
     /**
      * Event handler for the 'finish' button. This creates a new project
      * based on the text fields and saves it to the user profile.
@@ -70,7 +84,19 @@ public class CreateProjectView extends ProjectBasedController{
     		System.out.println("BWRP BRRRRPPP PLACEHOLDER PARSE PROBLEM");
     	}
     	Project proj = new Project(name, desc, cost, savings, null, notes, savings.intValue());
+    	
+    	if (editing){
+    		for (Project p : appGUI.getUser().getProjects()) {
+    			if (p.getName().equals(this.project.getName())) {
+    				appGUI.getUser().getProjects().remove(p);
+    				appGUI.getUser().getProjects().add(proj);
+    			}
+    		}
+    	}
+    	
+    	else
     	appGUI.getUser().addProject(proj);
+    	
     	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
     }
 
