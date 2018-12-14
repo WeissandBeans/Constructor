@@ -30,7 +30,7 @@ public class ProjectView extends ProjectBasedController {
 	    	lblNotes.setText(this.project.getNotes());
 	    	lblSavings.setText(this.project.getSavings().toString());
 	    	lblCost.setText(this.project.getCost().toString());
-	    	//lblMats.setText(this.project.getMaterial().getName());
+	    	lblMats.setText(this.project.getMaterial().getName());
 	    }
 
 	    @FXML

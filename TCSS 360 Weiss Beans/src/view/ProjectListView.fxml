@@ -29,24 +29,5 @@
         </content>
       </ScrollPane>
       <Button fx:id="btnAddProject" layoutX="342.0" layoutY="528.0" mnemonicParsing="false" onAction="#addProjectAction" prefHeight="41.0" prefWidth="45.0" text="+" />
-      <MenuBar layoutY="-1.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
    </children>
 </Pane>

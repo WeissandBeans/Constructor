@@ -3,4 +3,4 @@
 #PROJECTS:0
 #COMPLETED:0
 #SAVINGS:0.00
-#EMAIL:null
+#EMAIL:example_profile@gmail.com

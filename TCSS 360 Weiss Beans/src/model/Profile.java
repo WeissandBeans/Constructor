@@ -28,9 +28,7 @@ public class Profile {
 	private static final String FORMAT_COMPLETED = "#COMPLETED";
 	private static final String FORMAT_SAVINGS = "#SAVINGS";
 	private static final String FORMAT_EMAIL = "#EMAIL";
-	
-	
-	
+
 	// Instance Fields for what a profile should contain.
 	// General profile descriptors and information.
 	private static String profileName;

@@ -16,6 +16,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Material;
 import model.Project;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.*;
@@ -57,7 +58,7 @@ public class CreateProjectView extends ProjectBasedController{
     	txtCost.setText(this.project.getCost().toString());
     	txtDesc.setText(this.project.getDescription());
     	editing = true;
-    	//lblMats.setText(this.project.getMaterial().getName());
+    	txtMats.setText(this.project.getMaterial().getName());
     }
     
     
@@ -83,7 +84,7 @@ public class CreateProjectView extends ProjectBasedController{
     	catch (Exception e) {
     		System.out.println("BWRP BRRRRPPP PLACEHOLDER PARSE PROBLEM");
     	}
-    	Project proj = new Project(name, desc, cost, savings, null, notes, savings.intValue());
+    	Project proj = new Project(name, desc, cost, savings, new Material(materials, "Placeholder", new BigDecimal("0"), "Placeholder"), notes, savings.intValue());
     	
     	if (editing){
     		for (Project p : appGUI.getUser().getProjects()) {

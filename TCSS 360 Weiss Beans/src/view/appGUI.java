@@ -77,7 +77,6 @@ public class appGUI extends Application {
     		Profile.setEmail("example_profile@gmail.com");
     		Profile.setProfileDesc("Sample profile");
     		Profile.setProfileName("Bob");
-    		System.out.println(Profile.getProfileName());
     		Profile.setSavings(new BigDecimal("0"));
     		myStage.setScene(currentScene);
     		myStage.show();
@@ -101,7 +100,7 @@ public class appGUI extends Application {
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 
     	return loader.getController();
@@ -124,7 +123,7 @@ public class appGUI extends Application {
      */
     @FXML
     void startButtonAction(ActionEvent event) {
-    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
+    	appGUI.setScene(getClass().getResource("login_window.fxml"));
     }
     
     /**
@@ -160,6 +159,7 @@ public class appGUI extends Application {
      * To change what the application does at launch, 
      * edit appGUI.Start instead.
      * @param args the command line arguments
+     * @author Samantha
      */
     public static void main(String args[]) {
     		launch(args);
