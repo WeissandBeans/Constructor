@@ -97,7 +97,7 @@ public class ProjectListView {
      */
     @FXML
     void addProjectAction(ActionEvent event) {
-    	appGUI.setScene(getClass().getResource("CreateProjectView.fxml"));
+    	appGUI.setScene(getClass().getResource("createProjectView.fxml"));
     }
     
     /**
