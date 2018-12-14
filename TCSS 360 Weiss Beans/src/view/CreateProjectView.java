@@ -21,7 +21,7 @@ import javafx.embed.swing.SwingNode;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 
-public class CreateProjectView {
+public class CreateProjectView extends ProjectBasedController{
 	
 	@FXML
     private Button btnEditProject;
@@ -66,6 +66,8 @@ public class CreateProjectView {
 
     
     /**
+     * Event handler for the 'finish' button. This creates a new project
+     * based on the text fields and saves it to the user profile.
      * @author Samantha
      */
     @FXML
@@ -85,16 +87,19 @@ public class CreateProjectView {
     	catch (Exception e) {
     		System.out.println("BWRP BRRRRPPP PLACEHOLDER PARSE PROBLEM");
     	}
-    	Project proj = new Project(name, desc, cost, savings, null, notes, savings.intValue());
+    	Project proj = new Project(name, desc, cost, savings, null, savings.intValue(), notes);
+    	appGUI.getUser().addProject(proj);
+    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
     }
 
     
     /**
+     * Event handler for the 'back' button. Returns to the Project List View.
      * @author Samantha
      */
     @FXML
     void btnBackAction(ActionEvent event) {
-
+    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
     }
 
 	

@@ -2,7 +2,7 @@
  * TCSS 360 - Project
  */
 
-package model;
+
 
 import java.math.BigDecimal;
 
@@ -11,6 +11,8 @@ import java.math.BigDecimal;
  * @author Dustin Yoo
  * @version 1
  */
+
+
 
 public class Project {
 	
@@ -26,7 +28,7 @@ public class Project {
 	
 	private BigDecimal myProjectSavings;
 	
-	private String myProjectMaterial;
+	private Material myProjectMaterial;
 	
 	private int myProjectEnergySavings;
 	
@@ -34,7 +36,7 @@ public class Project {
 	
 	// Project constructor, takes in project name, description, cost, savings, Materials, notes, and energy savings.
 	public Project(final String theName, final String theDescription, final BigDecimal theCost, final BigDecimal theSavings, 
-					final String theMaterial, final int theEnergySavings, final String theNotes) {
+					final Material theMaterial, final String theNotes, final int theEnergySavings) {
 		
 		myProjectName = theName;
 		myProjectDescription = theDescription;
@@ -46,12 +48,16 @@ public class Project {
 		
 	}
 	
-	//main method to test getters & setters
-//	public static void main(String[] args) {
-//		Project test = new Project("bob", "description bob", new BigDecimal(2.9477867868678678678687), new BigDecimal(5.5555555555), new Material("tool", "mat desc", new BigDecimal(1.456), "mat measure"), "notes bob", 10);
-//		
-//		System.out.println(test.toString());
-//	}
+	// default values
+	public Project() {
+		setName("");
+		setDescription("");
+		setCost(new BigDecimal(0));
+		setSavings(new BigDecimal(0));
+		setMaterials(new Material());
+		setEnergySavings(0);
+		setNotes("");
+	}
 	
 	
 	//getter & setter for project name
@@ -96,11 +102,11 @@ public class Project {
 	
 	
 	// getter & setter for project materials
-	public String getMaterial() {
+	public Material getMaterial() {
 		return myProjectMaterial;
 	}
 	
-	public void setMaterials(final String theMaterials) {
+	public void setMaterials(final Material theMaterials) {
 		myProjectMaterial = theMaterials;
 	}
 
@@ -123,6 +129,30 @@ public class Project {
 	public void setNotes(final String theNotes) {
 		myProjectNotes = theNotes;
 	}
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		boolean result = false;
+		
+		if (this == obj) {
+			return true;
+		} else if (obj == null || obj.getClass() != getClass()) {
+			return false;
+		} else {
+			final Project prjt = (Project) obj;
+			result = myProjectName.equals(prjt.myProjectName);
+			result = myProjectDescription.equals(prjt.myProjectDescription);
+			result = myProjectCost.equals(prjt.myProjectCost);
+			result = myProjectSavings.equals(prjt.myProjectSavings);
+			result = myProjectMaterial.equals(prjt.myProjectMaterial);
+			result = Integer.compare(myProjectEnergySavings, prjt.myProjectEnergySavings) == 0;
+			result = myProjectNotes.equals(prjt.myProjectName);
+		}
+		
+		return result;
+	}
+	
 	
 	@Override
 	public String toString() {

@@ -1,9 +1,6 @@
-
 /*
  * TCSS 360 - Final Project
  */
-
-package model;
 
 import java.math.BigDecimal;
 
@@ -35,12 +32,13 @@ public class Material {
 		
 		}
 	
-	// main method to test getters & setters
-//	public static void main(String[] args) {
-//		Material test = new Material("wrench", "tool for project", new BigDecimal(2.9456), "12mm");
-//		
-//		System.out.println(test.toString());
-//	}
+	//default values
+	public Material() {
+		setName("");
+		setDescription("");
+		setCost(new BigDecimal(0));
+		setMeasurements("");
+	}
 	
 	// getter & setter for material name
 	public String getName() {
@@ -79,6 +77,25 @@ public class Material {
 		myMaterialMeasurements = theMeasurements;
 	}
 	
+	
+	@Override
+	public boolean equals(Object obj) {
+		boolean result = false;
+		
+		if (this == obj) {
+			return true;
+		} else if (obj == null || obj.getClass() != getClass()) {
+			return false;
+		} else {
+			final Material mat = (Material) obj;
+			result = myMaterialName.equals(mat.myMaterialName);
+			result = myMaterialDescription.equals(mat.myMaterialDescription);
+			result = myMaterialCost.equals(mat.myMaterialCost);
+			result = myMaterialMeasurements.equals(mat.myMaterialMeasurements);
+		}
+		
+		return result;
+	}
 	@Override
 	public String toString() {
 		String str = "\n********* Materials info *********";

@@ -5,12 +5,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProjectListView">
-
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="401.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProjectListView">
-
-  <children>
+   <children>
       <Text layoutX="14.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Projects">
          <font>
             <Font size="24.0" />
@@ -20,7 +16,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="448.0" prefWidth="366.0">
                <children>
-                  <TableView fx:id="tblProjects" prefHeight="446.0" prefWidth="364.0">
+                  <TableView fx:id="tblProjects" onMouseClicked="#tblClickAction" prefHeight="446.0" prefWidth="364.0">
                     <columns>
                       <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
                       <TableColumn fx:id="colMaterials" prefWidth="75.0" text="Materials" />
@@ -53,4 +49,4 @@
         </menus>
       </MenuBar>
    </children>
-</fx:root>
+</Pane>
