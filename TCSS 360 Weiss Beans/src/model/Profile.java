@@ -37,10 +37,6 @@ public class Profile {
 	
 	private static String profileDesc;
 	
-//	private static int projectCount;
-//	
-//	private static int completedProjectCount;
-	
 	private static BigDecimal savings;
 	
 	private static ArrayList<Project> projects;
@@ -83,32 +79,7 @@ public class Profile {
 	public static void setProfileDesc(final String profileDesc) {
 		saveProfile();
 		Profile.profileDesc = profileDesc;
-	}
-	
-	
-//	// Accessor and Mutator for projectCount.
-//	public static int getProjectCount() {
-//		saveProfile();
-//		return projectCount;
-//	}
-//	
-//	public static void setProjectCount(final int projectCount) {
-//		saveProfile();
-//		Profile.projectCount = projectCount;
-//	}
-//	
-//	
-//	// Accessor and Mutator for completedProjectCount.
-//	public static int getCompletedCount() {
-//		saveProfile();
-//		return completedProjectCount;
-//	}
-//	
-//	public static void setCompletedCount(final int compProjCount) {
-//		saveProfile();
-//		Profile.completedProjectCount = compProjCount;
-//	}
-	
+	}	
 	
 	// Accessor and Mutator for savings.
 	public static BigDecimal getSavings() {
@@ -135,37 +106,47 @@ public class Profile {
 
 	public static void setEmail(final String profileEmail) {
 		saveProfile();
-		Profile.profileName = profileEmail;
+		Profile.profileEmail = profileEmail;
 	}
 
+	// Adding projects into the arraylist of projects.
 	public void addProject(Project p) {
 		saveProfile();
 		projects.add(p);
 	}
 	
+	// Removing projects from the arraylist of projects.
 	public Project removeProject(Project p) {
 		saveProfile();
 		projects.remove(p);
 		return p;
 	}
 	
+	// Accessor to access projects in the arraylist of projects.
 	public ArrayList<Project> getProjects() {
 		saveProfile();
 		return projects;
 	}
 	
+	// Method to move a project that is deemed "complete" from
+	// the arraylist of projects to the arraylist of completed
+	// projects.
 	public void setProjectComplete(Project p) {
 		saveProfile();
 		completedProjects.add(p);
 		removeProject(p);
 	}
 	
+	// Method to remove a completed project from the arraylist
+	// of completed projects.
 	public Project removeCompletedProject(Project p) {
 		saveProfile();
 		completedProjects.remove(p);
 		return p;
 	}
 	
+	// Accessor to access completed projects in the arraylist of
+	// completed projects.
 	public ArrayList<Project> getCompletedProjects() {
 		saveProfile();
 		return completedProjects;
@@ -336,6 +317,7 @@ public class Profile {
 		return returnVal;
 	}
 	
+	// Load a blank profile if there is no pre-existing save.
 	private static void defaultParamsLoad() {
 		setProfileName("");
 		setProfileDesc("");
