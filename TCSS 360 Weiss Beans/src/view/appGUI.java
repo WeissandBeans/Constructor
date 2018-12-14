@@ -2,7 +2,9 @@ package view;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
@@ -15,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Profile;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.*;
@@ -69,6 +72,13 @@ public class appGUI extends Application {
     		root = FXMLLoader.load(getClass().getResource("Main_Window.fxml"));
     		currentScene = new Scene(root);
     		
+    		setUser(new Profile());
+    		
+    		Profile.setEmail("example_profile@gmail.com");
+    		Profile.setProfileDesc("Sample profile");
+    		Profile.setProfileName("Bob");
+    		System.out.println(Profile.getProfileName());
+    		Profile.setSavings(new BigDecimal("0"));
     		myStage.setScene(currentScene);
     		myStage.show();
 	}
@@ -88,6 +98,7 @@ public class appGUI extends Application {
     		root = loader.load();
     		myStage.setScene(new Scene(root));
 			myStage.show();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -114,7 +125,6 @@ public class appGUI extends Application {
     @FXML
     void startButtonAction(ActionEvent event) {
     	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
-    	
     }
     
     /**
@@ -133,6 +143,14 @@ public class appGUI extends Application {
      */
     protected static model.Profile getUser() {
     	return user;
+    }
+    
+    /**
+     * Returns the current user profile. for this application.
+     * @author Samantha
+     */
+    protected static void setUser(Profile p) {
+    	user = p;
     }
     
 
