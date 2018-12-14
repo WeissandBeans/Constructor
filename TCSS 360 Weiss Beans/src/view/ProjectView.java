@@ -1,10 +1,10 @@
 /**
- *
  * @author Samantha
  */
 
 package view;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Project;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.*;
@@ -29,7 +30,7 @@ public class ProjectView extends ProjectBasedController {
 	    	lblNotes.setText(this.project.getNotes());
 	    	lblSavings.setText(this.project.getSavings().toString());
 	    	lblCost.setText(this.project.getCost().toString());
-	    	lblMats.setText(this.project.getMaterial());
+	    	//lblMats.setText(this.project.getMaterial().getName());
 	    }
 
 	    @FXML
@@ -61,7 +62,14 @@ public class ProjectView extends ProjectBasedController {
 	     */
 	    @FXML
 	    void btnDeleteProjectAction(ActionEvent event) {
-	    	System.out.println("BALEETED!");
+	    	
+	    	for (Project p : appGUI.getUser().getProjects()) {
+    			if (p.getName().equals(this.project.getName())) {
+    				appGUI.getUser().getProjects().remove(p);
+    			}
+    		}
+	    	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
+	    	
 	    }
 
 	    
@@ -73,7 +81,9 @@ public class ProjectView extends ProjectBasedController {
 	     */
 	    @FXML
 	    void btnEditProjectAction(ActionEvent event) {
-	    	appGUI.setScene(getClass().getResource("CreateProjectView.fxml"));
+	    	CreateProjectView v = (CreateProjectView)appGUI.setScene(getClass().getResource("CreateProjectView.fxml"));
+	    	v.setProject(this.project);
+	    	v.populate();
 	    }
 
 	    /**

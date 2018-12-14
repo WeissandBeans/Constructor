@@ -46,24 +46,20 @@ public class CreateProjectView extends ProjectBasedController{
     
     @FXML
     private TextField txtDesc;
-
     
-    /**
-     * @author Samantha
-     */
-    @FXML
-    void btnDeleteProjectAction(ActionEvent event) {
-
+    private boolean editing = false;
+    
+    
+	public void populate(){
+    	txtProjectName.setText(this.project.getName());
+    	txtNotes.setText(this.project.getNotes());
+    	txtSavings.setText(this.project.getSavings().toString());
+    	txtCost.setText(this.project.getCost().toString());
+    	txtDesc.setText(this.project.getDescription());
+    	editing = true;
+    	//lblMats.setText(this.project.getMaterial().getName());
     }
     
-    /**
-     * @author Samantha
-     */
-    @FXML
-    void btnEditProjectAction(ActionEvent event) {
-
-    }
-
     
     /**
      * Event handler for the 'finish' button. This creates a new project
@@ -87,8 +83,20 @@ public class CreateProjectView extends ProjectBasedController{
     	catch (Exception e) {
     		System.out.println("BWRP BRRRRPPP PLACEHOLDER PARSE PROBLEM");
     	}
-    	Project proj = new Project(name, desc, cost, savings, null, savings.intValue(), notes);
+    	Project proj = new Project(name, desc, cost, savings, null, notes, savings.intValue());
+    	
+    	if (editing){
+    		for (Project p : appGUI.getUser().getProjects()) {
+    			if (p.getName().equals(this.project.getName())) {
+    				appGUI.getUser().getProjects().remove(p);
+    				appGUI.getUser().getProjects().add(proj);
+    			}
+    		}
+    	}
+    	
+    	else
     	appGUI.getUser().addProject(proj);
+    	
     	appGUI.setScene(getClass().getResource("ProjectListView.fxml"));
     }
 

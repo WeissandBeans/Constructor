@@ -1,3 +1,4 @@
+package model;
 /*
  * TCSS 360 - Final Project
  */

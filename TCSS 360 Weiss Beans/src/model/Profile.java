@@ -43,15 +43,16 @@ public class Profile {
 	
 	private static BigDecimal savings;
 	
-	private static ArrayList<Project> projects;
+	private static ArrayList<Project> projects = new ArrayList<Project>();
 	
-	private static ArrayList<Project> completedProjects;
+	private static ArrayList<Project> completedProjects = new ArrayList<Project>();
 	
 	private static String profileEmail;
 	
 	// Default Constructor
 	public Profile() {
 		defaultParamsLoad();
+		Profile.projects = new ArrayList<Project>();
 	}
 	
 	public Profile(String profileName, String profileDesc,
@@ -60,6 +61,7 @@ public class Profile {
 		setProfileDesc(profileDesc);
 		setSavings(savings);
 		setEmail(profileEmail);
+		Profile.projects = new ArrayList<Project>();
 	}
 	
 	// Accessor and Mutator for profileName.
@@ -193,7 +195,6 @@ public class Profile {
 			
 			outfile.close();
 		} catch (Exception e) {
-			//
 		}
 	}
 	
@@ -289,7 +290,7 @@ public class Profile {
 			tempNotes = parseString(parts[6]);
 			
 			Project tempProj = new Project(tempName, tempDesc, tempCost, tempSavings,
-											tempMats, tempEnergySavings, tempNotes);
+											null, tempNotes, tempEnergySavings);
 			
 			projects.add(tempProj);
 		}
