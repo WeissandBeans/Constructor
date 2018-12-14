@@ -1,8 +1,9 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
-import java.math.BigDecimal;
+import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.Test;
+import java.math.BigDecimal;
 import model.Profile;
 
 /**
@@ -15,17 +16,19 @@ import model.Profile;
 public class ProfileTest {
 	
 	// Testing default constructor.
-	private Profile myDefaultProfile;
+	private static Profile myDefaultProfile;
 	
 	// Testing constructor that takes in parameters.
-	private Profile myProfile;
+	private static Profile myProfile;
 	
+	@Before
 	public void setUp() {
 		myDefaultProfile = new Profile();
 		myProfile = new Profile("Jon", "A Profile",
 					new BigDecimal("1.99"), "myemail@email.com");
 	}
 	
+	// Tests for profile name accessor and mutator.
 	@Test
 	public void testGetProfileName() {
 		assertEquals("Jon", myProfile.getProfileName());
@@ -37,6 +40,7 @@ public class ProfileTest {
 		assertEquals("noJ", myProfile.getProfileName());
 	}
 	
+	// Tests for profile description accessor and mutator.
 	@Test
 	public void testGetProfileDesc() {
 		assertEquals("A Profile", myProfile.getProfileDesc());
@@ -48,6 +52,7 @@ public class ProfileTest {
 		assertEquals("Profile A", myProfile.getProfileDesc());
 	}
 	
+	// Tests for savings accessor and mutator.
 	@Test
 	public void testGetSavings() {
 		assertEquals(new BigDecimal("1.99"), myProfile.getSavings());
@@ -59,14 +64,21 @@ public class ProfileTest {
 		assertEquals(new BigDecimal("2.99"), myProfile.getSavings());
 	}
 	
+	// Tests for email accessor and mutator.
 	@Test
 	public void testGetEmail() {
-		assertEquals(new BigDecimal("1.99"), myProfile.getEmail());
+		assertEquals("myemail@email.com", myProfile.getEmail());
 	}
 	
 	@Test
 	public void testSetEmail() {
 		myProfile.setEmail("emailmy@email.com");
 		assertEquals("emailmy@email.com", myProfile.getEmail());
+	}
+	
+	// Test for profile toString.
+	@Test
+	public void test() {
+		assertEquals("", myProfile.toString());
 	}
 }
